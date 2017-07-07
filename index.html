@@ -1,6 +1,7 @@
 <html>
 
 <head>
+    <meta charset="UTF-8">
     <title>Jeff Weisbein</title>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
     <style type="text/css">
@@ -66,21 +67,31 @@
             });
 
             var helpCommand = {
-                clear: "clear",
-                help: "help",
+                clear: {
+                    nameCommand: "clear",
+                    function: function () {
+                        _console.html("");
+                    }
+                },
+                help:  {
+                    nameCommand: "help",
+                    function: function () {
+                        let s =  _console.html();
+
+                        for (let i in helpCommand) {
+                            let a = helpCommand[i];
+                            s += a.nameCommand + "<br>";
+                        }
+                        _console.html(s);
+                    }
+                }
             }
 
             var command = function ($c) {
-                switch($c) {
-                    case helpCommand.clear:
-                        _console.html("");
-                        break
-                    case helpCommand.help:
-                        
-                        break
-                    default:
-                        _console.html(_console.html()+"Erro comando não existe<br>");
-                        break;
+                if(helpCommand[$c] == undefined) {
+                    _console.html(_console.html()+"Erro comando não existe<br>");
+                } else {
+                    helpCommand[$c].function();
                 }
             }
             code.keyup(function(event) {
@@ -97,14 +108,36 @@
                     this.value = "";
                 }
                 code.focus();
-            });            
+            });  
+            var _t, _c = 0, _st = new Array();
+            $.get("text.txt",function(t){
+                _t = t;
+                for (let i = 0; i <= t.length; i++) {
+                    _st.push(setTimeout(function() {
+                        _c++;
+                        _console.html(_console.html()+_t.substring(i-1,i));
+                        $('html, body').animate({
+                            scrollTop: $(document).height()
+                        }, 0);
+                        if(_t.length == _c) { 
+                            _var.css('display','inline-block');
+                            atual.css('display','inline-block');
+                            code.focus();
+                            for (let i = 0; i <= _st.length; i++) {
+                                clearTimeout(_st[i]);
+                            }
+                        }
+                    },i*1));
+                }
+                    // console.log(t.length);
+            });          
         });
     </script>
     <div id="console"></div>
-    <div id="var">
+    <div id="var" style="display: none;">
         <span id="a">jhonatas@fender</span>:<span id="b">~</span><span id="c">$</span>
     </div>
-    <div id="atual"></div>
+    <div id="atual" style="display: none;"></div>
     <input id="code">
 </body>
 
