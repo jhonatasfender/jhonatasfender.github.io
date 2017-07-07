@@ -2,13 +2,17 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Jeff Weisbein</title>
+    <title>jhonatasfender</title>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
     <style type="text/css">
         body {
             background-color: #000;           
             font-family: courier, monospace;
             color: #fff;
+        }
+
+        body, input {            
+            font-size: 10px;
         }
 
         a {
@@ -115,7 +119,12 @@
                 for (let i = 0; i <= t.length; i++) {
                     _st.push(setTimeout(function() {
                         _c++;
-                        _console.html(_console.html()+_t.substring(i-1,i));
+                        if(_t.substring(i-1,i) == "\n")
+                            _console.html(_console.html()+"<br>");
+                        else if (_t.substring(i-1,i) == " ")                            
+                            _console.html(_console.html()+"&nbsp;");
+                        else 
+                            _console.html(_console.html()+_t.substring(i-1,i));
                         $('html, body').animate({
                             scrollTop: $(document).height()
                         }, 0);
@@ -127,7 +136,7 @@
                                 clearTimeout(_st[i]);
                             }
                         }
-                    },i*1));
+                    },i*0.1));
                 }
                     // console.log(t.length);
             });          
