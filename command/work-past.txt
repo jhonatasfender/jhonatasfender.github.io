@@ -1,0 +1,33 @@
+
+###########################################################################
+##     ^<span|class="blue">Empresa:</span>$ ^<span|class="green">MICROMED BIOTECNOLOGIA</span>$                                   ##
+##     ^<span|class="blue">Data de admissão:</span>$ ^<span|class="green">05/2015 a 11/2016</span>$                               ##
+##     ^<span|class="blue">Cargo:</span>$ ^<span|class="green">Programador PHP</span>$                                            ##
+##     ^<span|class="blue">Atividades: </span>$                                                      ##
+##             ^<span|class="blue">1º</span>$  - Atualização de Sistemas da Intranet,                ##
+##                   remodelando o Banco de Dados e migrando do programa ##
+##             ^<span|class="blue">2º</span>$  - Microsoft Access para a linguagem PHP,              ##
+##                   utilizando o Framework Phalcon.                     ##
+##             ^<span|class="blue">3º</span>$  - Desenvolvimento de Web Services em AdvPL.           ##
+##             ^<span|class="blue">4º</span>$  - Uso e aplicação de metodologia de                   ##
+##                   desenvolvimento ágil, utilizando SCRUM.             ##
+##             ^<span|class="blue">5º</span>$  - Versionamento de aplicações com SVN e Git..         ##
+###########################################################################
+##     ^<span|class="blue">Empresa:</span>$ ^<span|class="green">VIA APPIA</span>$                                                ##
+##     ^<span|class="blue">Data de admissão:</span>$ ^<span|class="green">03/2014 a 04/2015</span>$                               ##
+##     ^<span|class="blue">Cargo:</span>$ ^<span|class="green">Suporte Banco de Dados</span>$                                     ##
+##     ^<span|class="blue">Atividades: </span>$                                                      ##
+##             ^<span|class="blue">1º</span>$  - Gerenciamento de banco de dados Microsoft           ##
+##                   SQL Server (2005, 2008, 2008R2, 2012, 2014).        ##
+##             ^<span|class="blue">1º</span>$  - Desenvolvimento de relatórios com IReport.          ##
+##             ^<span|class="blue">2º</span>$  - Programação em T-SQL.                               ##
+##             ^<span|class="blue">3º</span>$  - Backup e Restore dos Bancos de Dados.               ##
+##             ^<span|class="blue">4º</span>$  - Suporte ao Sistema ChronusWeb.                      ##
+###########################################################################
+##     ^<span|class="blue">Empresa:</span>$ ^<span|class="green">DF INFORMÁTICA</span>$                                           ##
+##     ^<span|class="blue">Data de admissão:</span>$ ^<span|class="green">2012 a 2014</span>$                                     ##
+##     ^<span|class="blue">Cargo:</span>$ ^<span|class="green">Programador PHP</span>$                                            ##
+##     ^<span|class="blue">Atividades: </span>$                                                      ##
+##             ^<span|class="blue">1º</span>$  - Desenvolvimento de web sites.                       ##
+##             ^<span|class="blue">2º</span>$  - Executar manutenção em Web Sites.                   ##
+###########################################################################
