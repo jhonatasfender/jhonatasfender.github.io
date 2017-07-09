@@ -211,35 +211,67 @@ $(document).ready(function($) {
             scrollTop: $(document).height()
         }, 0);
     }
-
-    code.keyup(function(event) {
+    var keydown = false;
+    var key = function(event) {
         let s = atual.html();
-        // console.log(event.keyCode, event.which);
-        if (event.keyCode == 8) { // backspace
-            if(s.substring(s.length - 1) == ';' && s.lastIndexOf("&nbsp;") != -1)
-                atual.html(s.substring(0,s.lastIndexOf("&nbsp;")));
-            else
-                atual.html(s.substring(0, s.length - 1))
-        } else if (event.keyCode == 13) {
-            _console.html(_console.html() + _var.html() + atual.html() + "<br>");
-            command(atual.html());
-            atual.html("");
-        } else if (event.keyCode == 38 || event.keyCode == 40) {
-            if (executed[upDownArrow] != undefined)
-                atual.html(executed[upDownArrow]);
-            if (event.keyCode == 38)
-                upDownArrow++;
-            else if (event.keyCode == 40)
-                upDownArrow--;
-        } else {
-            if(this.value == " ")
-                atual.html(s + "&nbsp;");
-            else 
-                atual.html(s + this.value);
-            this.value = "";
+        if(event.type == "keydown") {
+            console.log(event.type,event.keyCode,event.originalEvent.key);
+            if(event.keyCode == 17)
+                keydown = true;
+        } else { 
+            if (event.keyCode == 8) { // backspace
+                if(s.substring(s.length - 1) == ';' && s.lastIndexOf("&nbsp;") != -1)
+                    atual.html(s.substring(0,s.lastIndexOf("&nbsp;")));
+                else
+                    atual.html(s.substring(0, s.length - 1))
+            } else if (event.keyCode == 17){
+                keydown = true;
+            } else if(keydown && event.keyCode == 67) {
+                console.log(keydown,event.type,event.keyCode,event.originalEvent.key);
+                keydown = false;
+            } else if (event.keyCode == 13) {
+                _console.html(_console.html() + _var.html() + atual.html() + "<br>");
+                command(atual.html());
+                atual.html("");
+            } else if (event.keyCode == 38 || event.keyCode == 40) {
+                if (executed[upDownArrow] != undefined)
+                    atual.html(executed[upDownArrow]);
+                if (event.keyCode == 38)
+                    upDownArrow++;
+                else if (event.keyCode == 40)
+                    upDownArrow--;
+            } else {
+                if(this.value == " ")
+                    atual.html(s + "&nbsp;");
+                else 
+                    atual.html(s + this.value);
+                this.value = "";
+            }
         }
         code.focus();
+    }
+
+    code.keyup(key).keydown(key);
+
+    /*var ctrlDown = false,
+        ctrlKey = 17,
+        cmdKey = 91,
+        vKey = 86,
+        cKey = 67;
+
+    $(document).keydown(function(e) {
+        if (e.keyCode == ctrlKey || e.keyCode == cmdKey) ctrlDown = true;
+    }).keyup(function(e) {
+        if (e.keyCode == ctrlKey || e.keyCode == cmdKey) ctrlDown = false;
     });
+
+
+    $(document).keydown(function(e) {
+        if (ctrlDown && (e.keyCode == vKey || e.keyCode == cKey)) {
+            console.log(e.keyCode,"teste");
+        }
+    });*/
+
     var _t, _c = 0,
         _st = new Array(),
         tag = "",
