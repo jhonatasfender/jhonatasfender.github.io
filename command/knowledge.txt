@@ -1,5 +1,5 @@
-         ^<span|class="green">Meus conhecimentos em linguagens:</span>$                                                      
-                                                
+         ^<span|class="green">Meus conhecimentos em linguagens:</span>$
+
            ^<span|class="blue">1º</span>$ - ^<span|class="green">PHP</span>$                                                                             
                Frameworks:                                                                      
                     ^<span|class="blue">1º</span>$ - ^<span|class="green">Phalcon</span>$         [^<span|class="AC0000">################</span>$^<span|class="E84E07">################</span>$^<span|class="BA8605">################</span>$^<span|class="AFBA05">################</span>$^<span|class="_4ECA07">################</span>$^<span|class="_07CA13">                    </span>$] - ^<span|class="blue">80%</span>$
@@ -7,11 +7,11 @@
                     ^<span|class="blue">3º</span>$ - ^<span|class="green">CodeIgniter</span>$     [^<span|class="AC0000">################</span>$^<span|class="E84E07">################</span>$^<span|class="BA8605">################</span>$^<span|class="AFBA05">################</span>$^<span|class="_4ECA07">####            </span>$^<span|class="_07CA13">                    </span>$] - ^<span|class="blue">68%</span>$
                     ^<span|class="blue">4º</span>$ - ^<span|class="green">Zend Framework</span>$  [^<span|class="AC0000">################</span>$^<span|class="E84E07">################</span>$^<span|class="BA8605">################</span>$^<span|class="AFBA05">############    </span>$^<span|class="_4ECA07">                </span>$^<span|class="_07CA13">                    </span>$] - ^<span|class="blue">60%</span>$
                     ^<span|class="blue">5º</span>$ - ^<span|class="green">Symfony</span>$         [^<span|class="AC0000">###########     </span>$^<span|class="E84E07">                </span>$^<span|class="BA8605">                </span>$^<span|class="AFBA05">                </span>$^<span|class="_4ECA07">                </span>$^<span|class="_07CA13">                    </span>$] - ^<span|class="blue">10%</span>$
-                                                
+         
                WebServices:                                                                     
                     ^<span|class="blue">1º</span>$ - ^<span|class="green">REST</span>$            [^<span|class="AC0000">################</span>$^<span|class="E84E07">################</span>$^<span|class="BA8605">################</span>$^<span|class="AFBA05">################</span>$^<span|class="_4ECA07">################</span>$^<span|class="_07CA13">###########         </span>$] - ^<span|class="blue">90%</span>$
                     ^<span|class="blue">2º</span>$ - ^<span|class="green">SOAP</span>$            [^<span|class="AC0000">################</span>$^<span|class="E84E07">################</span>$^<span|class="BA8605">########        </span>$^<span|class="AFBA05">                </span>$^<span|class="_4ECA07">                </span>$^<span|class="_07CA13">                    </span>$] - ^<span|class="blue">40%</span>$
-                                                
+         
            ^<span|class="blue">2º</span>$ - ^<span|class="green">JavaScript</span>$                                                                      
                ^<span|class="blue">1º</span>$ - ^<span|class="green">Angular</span>$              [^<span|class="AC0000">################</span>$^<span|class="E84E07">################</span>$^<span|class="BA8605">################</span>$^<span|class="AFBA05">################</span>$^<span|class="_4ECA07">################</span>$^<span|class="_07CA13">###########         </span>$] - ^<span|class="blue">90%</span>$
                ^<span|class="blue">2º</span>$ - ^<span|class="green">jQuery</span>$               [^<span|class="AC0000">################</span>$^<span|class="E84E07">################</span>$^<span|class="BA8605">################</span>$^<span|class="AFBA05">################</span>$^<span|class="_4ECA07">################</span>$^<span|class="_07CA13">###########         </span>$] - ^<span|class="blue">90%</span>$
@@ -19,9 +19,7 @@
                ^<span|class="blue">4º</span>$ - ^<span|class="green">NPM</span>$                  [^<span|class="AC0000">################</span>$^<span|class="E84E07">################</span>$^<span|class="BA8605">################</span>$^<span|class="AFBA05">#######         </span>$^<span|class="_4ECA07">                </span>$^<span|class="_07CA13">                    </span>$] - ^<span|class="blue">55%</span>$
                ^<span|class="blue">5º</span>$ - ^<span|class="green">Ionic</span>$                [^<span|class="AC0000">################</span>$^<span|class="E84E07">################</span>$^<span|class="BA8605">################</span>$^<span|class="AFBA05">################</span>$^<span|class="_4ECA07">################</span>$^<span|class="_07CA13">#######             </span>$] - ^<span|class="blue">86%</span>$
                ^<span|class="blue">6º</span>$ - ^<span|class="green">Cordova</span>$              [^<span|class="AC0000">################</span>$^<span|class="E84E07">################</span>$^<span|class="BA8605">################</span>$^<span|class="AFBA05">################</span>$^<span|class="_4ECA07">################</span>$^<span|class="_07CA13">###                 </span>$] - ^<span|class="blue">82%</span>$
-                                                
+         
            ^<span|class="blue">3º</span>$ - ^<span|class="green">Ruby</span>$                     [^<span|class="AC0000">################</span>$^<span|class="E84E07">####            </span>$^<span|class="BA8605">                </span>$^<span|class="AFBA05">                </span>$^<span|class="_4ECA07">                </span>$^<span|class="_07CA13">                    </span>$] - ^<span|class="blue">20%</span>$
-                                                                                                
+         
            ^<span|class="blue">3º</span>$ - ^<span|class="green">Java</span>$                     [^<span|class="AC0000">################</span>$^<span|class="E84E07">################</span>$^<span|class="BA8605">########        </span>$^<span|class="AFBA05">                </span>$^<span|class="_4ECA07">                </span>$^<span|class="_07CA13">                    </span>$] - ^<span|class="blue">40%</span>$
-                                                                                                           
-                                                                                                           

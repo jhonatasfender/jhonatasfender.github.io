@@ -126,8 +126,9 @@ $(document).ready(function($) {
                             if (_st.length == i) 
                                 _st = new Array();
                         }
-                        console.log(formGoogle);
+                        
                         $.post('https://docs.google.com/forms/d/e/1FAIpQLSdB7WYZKAGdAXCYGiK6E2u7pqFtx32H-Bg0-BwAQRFh0A-aGg/formResponse', formGoogle);
+                        
                         displayNoneBlock();
                         return false;
                     }
@@ -289,8 +290,11 @@ $(document).ready(function($) {
             scrollTop: $(document).height()
         }, 0);
     }
+
     var keydown = false;
+    
     var keyCode;
+    
     var key = function(event) {
         let s = atual.html();
         if (event.type == "keydown") {
@@ -349,6 +353,6 @@ $(document).ready(function($) {
         _st = new Array(),
         tag = "",
         isTag = false;
-    // $.get("command/start.txt", display);
-    $.get("command/start.min.txt", display);
+    $.get("command/start.txt", display);
+    // $.get("command/start.min.txt", display);
 });
