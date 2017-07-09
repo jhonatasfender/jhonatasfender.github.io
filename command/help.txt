@@ -9,3 +9,4 @@
                 ^<span|class="blue">2º</span>$ - --freela => Os trabalhos freela que estou fazendo.                                                                
                 ^<span|class="blue">2º</span>$ - --client => Os Clientes que já atendi e os que estou atendendo.                                                   
        ^<span|class="blue">5º</span>$ - ^<span|class="green">clear</span>$ => Este comando limpa a tela.                                                           
+^<br>$
