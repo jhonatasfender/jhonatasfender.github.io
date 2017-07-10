@@ -1,2 +1,3 @@
-teste
+      Para ser redirecionado para algumas dessas redes sociais basta selecionar o key utilizando esse comando 
+         como usar: ^<span|class="green">contact</span>$ --select [args]
 ^<a|href="https://www.linkedin.com/in/jhonatasfender">Linkedin</a>$

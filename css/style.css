@@ -15,6 +15,28 @@ input {
     font-size: 14px;
 }
 
+#console::selection { 
+    background: black !important; 
+}
+
+span::selection { 
+    background: black !important; 
+}
+
+br::selection { 
+    background: black !important; 
+}
+
+div::selection { 
+    background: black !important; 
+}
+
+#code::selection { 
+    color: black !important; 
+    background: white !important; 
+    font-weight: bolder;
+}
+
 a {
     color: #0bc;
     text-decoration: none;
@@ -33,7 +55,7 @@ a {
 }
 
 input {
-    width: 38px;
+    width: 50%;
     border: none;
     border-color: #000;
     background-color: #000;

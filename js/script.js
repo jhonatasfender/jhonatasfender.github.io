@@ -111,6 +111,26 @@ $(document).ready(function($) {
         }
     ];
 
+    var social = {
+        "1": {
+            name: "linkedin",
+            link: "https://www.linkedin.com/in/jhonatasfender/"
+        },
+        "2": {
+            name: "github",
+            link: "https://github.com/jhonatasfender"
+        },
+        "3": {
+            name: "Instagram",
+            link: "https://www.instagram.com/jhonatasfender/"
+        },
+        "4": {
+            name: "Instagram",
+            link: "https://plus.google.com/+JonatasRodrigueslindo"
+        },
+        
+    }
+
     var setTimeContact = 100,
         countContact = 0,
         countStringContact = 0;
@@ -166,12 +186,11 @@ $(document).ready(function($) {
                         countStringContact++;
                     _console.html(s);
                     if (tt == countStringContact && (keyCode != null ? keyCode.keyCode == 13 : false)) {
-                        console.log(keyCode.keyCode);
                         _console.html(s + "<br>");
-                        if (atual.html() != "") {
-                            contact[countContact].value = atual.html();
+                        if (code.val() != "") {
+                            contact[countContact].value = code.val();
                             formGoogle[contact[countContact].keyGoogleForm] = contact[countContact].value.replace(/\&nbsp\;/g, ' ');
-                            atual.html("");
+                            code.val("");
                             _console.html(_console.html() + `<span id="a">${contact[countContact].value}</span><br>`);
                             countStringContact = 0;
                             countContact++;
@@ -213,7 +232,7 @@ $(document).ready(function($) {
                 }
             },
             function: function() {
-                addConsoleText("este e o meu work");
+                $.get("command/work.txt", display);
             }
         }
     }
@@ -232,20 +251,20 @@ $(document).ready(function($) {
                     scrollTop: $(document).height()
                 }, 0);
                 _c++;
-                if (_t.substring(i - 1, i) == "^" || isTag) {
-                    tag += _t.substring(i - 1, i) == "|" ? " " : _t.substring(i - 1, i) == " " ? "&nbsp;" : _t.substring(i - 1, i).replace(/(\^|\$)/, '');
+                if (_t.substring(i, i+1) == "^" || isTag) {
+                    tag += _t.substring(i, i+1) == "|" ? " " : _t.substring(i, i+1) == " " ? "&nbsp;" : _t.substring(i, i+1).replace(/(\^|\$)/, '');
                     isTag = true;
-                    if (_t.substring(i - 1, i) == "$") {
+                    if (_t.substring(i, i+1) == "$") {
                         _console.html(_console.html() + tag);
                         isTag = false;
                         tag = "";
                     }
-                } else if (_t.substring(i - 1, i) == " ")
+                } else if (_t.substring(i, i+1) == " ")
                     _console.html(_console.html() + "&nbsp;");
-                else if (_t.substring(i - 1, i) == "\n")
+                else if (_t.substring(i, i+1) == "\n")
                     _console.html(_console.html() + "<br>");
                 else
-                    _console.html(_console.html() + _t.substring(i - 1, i));
+                    _console.html(_console.html() + _t.substring(i, i+1));
                 if (_t.length == _c) {
                     _console.html(_console.html() + "<br><br>");
                     displayNoneBlock();
@@ -272,8 +291,7 @@ $(document).ready(function($) {
         }, _st.length * 2);
     }
 
-    var upDownArrow = 0,
-        executed = new Array();
+    var executed = new Array(),upDownArrow = executed.length;
 
     var displayNoneBlock = function($bool) {
         if ((_var.is(":visible") && atual.is("visible")) || $bool == 1) {
@@ -328,25 +346,16 @@ $(document).ready(function($) {
     var keyCode;
 
     var key = function(event) {
-        let s = atual.html();
+        let s = code.val();
         if (event.type == "keydown") {
             keyCode = event;
             if (event.keyCode == 17)
                 keydown = true;
         } else {
             keyCode = null;
-            if (event.keyCode == 8) { // backspace
-                if (s.substring(s.length - 1) == ';' && s.lastIndexOf("&nbsp;") != -1)
-                    atual.html(s.substring(0, s.lastIndexOf("&nbsp;")));
-                else
-                    atual.html(s.substring(0, s.length - 1))
-            } else if (event.keyCode == 17) {
+            if (event.keyCode == 17) {
                 keydown = false;
-            }
-            /*else if (keydown && event.keyCode == 67) {
-
-                       } */
-            else if (keydown && event.keyCode == 67) {
+            } else if (keydown && event.keyCode == 67) {
                 for (let i = 0; i <= _st.length; i++) {
                     clearTimeout(_st[i]);
                     window.clearInterval(_st[i]);
@@ -358,24 +367,21 @@ $(document).ready(function($) {
                 }
                 keydown = false;
             } else if (event.keyCode == 13) { // enter
+                upDownArrow = executed.length;
                 if (_st.length == 0) {
-                    _console.html(_console.html() + _var.html() + atual.html() + "<br>");
-                    command(atual.html());
-                    atual.html("");
+                    _console.html(_console.html() + _var.html() + code.val() + "<br>");
+                    command(code.val());
+                    code.val("");
                 }
             } else if (event.keyCode == 38 || event.keyCode == 40) {
-                if (executed[upDownArrow] != undefined)
-                    atual.html(executed[upDownArrow]);
                 if (event.keyCode == 38)
-                    upDownArrow++;
-                else if (event.keyCode == 40)
                     upDownArrow--;
+                else if (event.keyCode == 40)
+                    upDownArrow++;
+                if (executed[upDownArrow] != undefined)
+                    code.val(executed[upDownArrow]);
             } else {
-                if (this.value == " ")
-                    atual.html(s + "&nbsp;");
-                else
-                    atual.html(s + this.value);
-                this.value = "";
+                upDownArrow = executed.length;
             }
         }
         code.focus();
