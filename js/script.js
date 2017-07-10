@@ -37,17 +37,17 @@ $(document).ready(function($) {
     document.onkeydown = function() {
         // console.log(`event.keyCode == ${event.keyCode} || // "${event.key}"`);
         if (
-            // event.keyCode == 123 || // "F12"
+            event.keyCode == 123 || // "F12"
             event.keyCode == 112 || // "F1"
             event.keyCode == 113 || // "F2"
             event.keyCode == 114 || // "F3"
-            event.keyCode == 27 || // "Escape"
+            event.keyCode == 27  || // "Escape"
             event.keyCode == 115 || // "F4"
             event.keyCode == 117 || // "F6"
             event.keyCode == 118 || // "F7"
             event.keyCode == 119 || // "F8"
             event.keyCode == 120 || // "F9"
-            event.keyCode == 121 // "F10"
+            event.keyCode == 121    // "F10"
         ) {
             event.keyCode = 0;
             code.focus();
@@ -113,6 +113,13 @@ $(document).ready(function($) {
         },
         contact: {
             nameCommand: "contact",
+            command: {
+                "--networks" : {
+                    function: function() {
+                        $.get("command/contact-networks.txt", display);
+                    }
+                }
+            },
             function: function() {
                 countContact = 0;
                 countStringContact = 0;
@@ -198,6 +205,7 @@ $(document).ready(function($) {
         if (_st.length != 0) {
             _st = new Array();
         }
+        console.log(t);
         for (let i = 0; i <= t.length; i++) {
             _st.push(setTimeout(function() {
                 _c++;;
