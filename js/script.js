@@ -1,3 +1,21 @@
+if (!(location.hostname === "localhost" || location.hostname === "127.0.0.1")) { 
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-78230974-1', 'auto');
+    ga('send', 'pageview');
+}
+
+
 $(document).ready(function($) {
     var code = $("#code"),
         _var = $("#var"),
@@ -37,7 +55,7 @@ $(document).ready(function($) {
     document.onkeydown = function() {
         // console.log(`event.keyCode == ${event.keyCode} || // "${event.key}"`);
         if (
-            event.keyCode == 123 || // "F12"
+            // event.keyCode == 123 || // "F12"
             event.keyCode == 112 || // "F1"
             event.keyCode == 113 || // "F2"
             event.keyCode == 114 || // "F3"
@@ -47,7 +65,7 @@ $(document).ready(function($) {
             event.keyCode == 118 || // "F7"
             event.keyCode == 119 || // "F8"
             event.keyCode == 120 || // "F9"
-            event.keyCode == 121    // "F10"
+            event.keyCode == 121 // "F10"
         ) {
             event.keyCode = 0;
             code.focus();
@@ -59,7 +77,7 @@ $(document).ready(function($) {
         displayNoneBlock();
         _console.html(_console.html() + $s + "<br>");
     }
-    
+
     var formGoogle = {
         "entry.684703253": "",
         "entry.1084554677": "",
@@ -67,8 +85,7 @@ $(document).ready(function($) {
         "entry.240145468": ""
     };
 
-    var contact = [
-        {
+    var contact = [{
             input: "name",
             text: "Digite seu Nome: ",
             value: "",
@@ -94,7 +111,9 @@ $(document).ready(function($) {
         }
     ];
 
-    var setTimeContact = 100,countContact = 0, countStringContact = 0;
+    var setTimeContact = 100,
+        countContact = 0,
+        countStringContact = 0;
 
     var clearTimeContact = new Array();
 
@@ -114,7 +133,7 @@ $(document).ready(function($) {
         contact: {
             nameCommand: "contact",
             command: {
-                "--networks" : {
+                "--networks": {
                     function: function() {
                         $.get("command/contact-networks.txt", display);
                     }
@@ -125,31 +144,33 @@ $(document).ready(function($) {
                 countStringContact = 0;
                 _st.push(setInterval(function() {
                     _var.css('display', 'none');
-                    if(contact[countContact] == undefined) {
+                    if (contact[countContact] == undefined) {
                         for (let i = 0; i <= _st.length; i++) {
                             clearTimeout(_st[i]);
                             window.clearInterval(_st[i]);
 
-                            if (_st.length == i) 
+                            if (_st.length == i)
                                 _st = new Array();
                         }
-                        
+
                         $.post('https://docs.google.com/forms/d/e/1FAIpQLSdB7WYZKAGdAXCYGiK6E2u7pqFtx32H-Bg0-BwAQRFh0A-aGg/formResponse', formGoogle);
-                        
+
                         displayNoneBlock();
                         return false;
                     }
-                    let a = contact[countContact], tt = a.text.length, s = "";
-                    s += _console.html()+a.text.substring(countStringContact,countStringContact+1);
-                    if(tt != countStringContact)
+                    let a = contact[countContact],
+                        tt = a.text.length,
+                        s = "";
+                    s += _console.html() + a.text.substring(countStringContact, countStringContact + 1);
+                    if (tt != countStringContact)
                         countStringContact++;
                     _console.html(s);
-                    if(tt == countStringContact && (keyCode != null ? keyCode.keyCode == 13 : false)) {
+                    if (tt == countStringContact && (keyCode != null ? keyCode.keyCode == 13 : false)) {
                         console.log(keyCode.keyCode);
                         _console.html(s + "<br>");
-                        if(atual.html() != "") {
+                        if (atual.html() != "") {
                             contact[countContact].value = atual.html();
-                            formGoogle[contact[countContact].keyGoogleForm] = contact[countContact].value.replace(/\&nbsp\;/g,' ');
+                            formGoogle[contact[countContact].keyGoogleForm] = contact[countContact].value.replace(/\&nbsp\;/g, ' ');
                             atual.html("");
                             _console.html(_console.html() + `<span id="a">${contact[countContact].value}</span><br>`);
                             countStringContact = 0;
@@ -158,7 +179,7 @@ $(document).ready(function($) {
                             addConsoleText(`<span class="red">Atenção caso você deseja entrar em contato comigo e necessario preencher algumas informações para que eu possa entrar em contato contigo!</span><br>`);
                         }
                     }
-                },setTimeContact));
+                }, setTimeContact));
             }
         },
         knowledge: {
@@ -204,11 +225,13 @@ $(document).ready(function($) {
         _c = 0;
         if (_st.length != 0) {
             _st = new Array();
-        }
-        console.log(t);
+        }      
         for (let i = 0; i <= t.length; i++) {
-            _st.push(setTimeout(function() {
-                _c++;;
+            _st.push(setTimeout(function() {  
+                $('html, body').animate({
+                    scrollTop: $(document).height()
+                }, 0);
+                _c++;
                 if (_t.substring(i - 1, i) == "^" || isTag) {
                     tag += _t.substring(i - 1, i) == "|" ? " " : _t.substring(i - 1, i) == " " ? "&nbsp;" : _t.substring(i - 1, i).replace(/(\^|\$)/, '');
                     isTag = true;
@@ -223,17 +246,15 @@ $(document).ready(function($) {
                     _console.html(_console.html() + "<br>");
                 else
                     _console.html(_console.html() + _t.substring(i - 1, i));
-                $('html, body').animate({
-                    scrollTop: $(document).height()
-                }, 0);
                 if (_t.length == _c) {
                     _console.html(_console.html() + "<br><br>");
                     displayNoneBlock();
                     code.focus();
                     for (let i = 0; i <= _st.length; i++) {
                         clearTimeout(_st[i]);
-                        if (_st.length == i) 
-                            _st = new Array();
+                        if (_st.length == i) {
+                            _st = new Array();  
+                        }
                     }
                 }
             }, i * 0.5));
@@ -243,7 +264,7 @@ $(document).ready(function($) {
         _setTime = setTimeout(function() {
             for (let i = 0; i <= _st.length; i++) {
                 clearTimeout(_st[i]);
-                if (_st.length == i){
+                if (_st.length == i) {
                     _st = new Array();
                     clearTimeout(_setTime);
                 }
@@ -255,16 +276,22 @@ $(document).ready(function($) {
         executed = new Array();
 
     var displayNoneBlock = function($bool) {
-        if ((_var.is(":visible") && atual.is("visible")) || $bool) {
+        if ((_var.is(":visible") && atual.is("visible")) || $bool == 1) {
             _var.css('display', 'none');
             atual.css('display', 'none');
         } else {
+            $('html, body').animate({
+                scrollTop: $(document).height()
+            }, 0);
             _var.css('display', 'inline-block');
             atual.css('display', 'inline-block');
         }
     }
 
     var command = function($c) {
+        $('html, body').animate({
+            scrollTop: $(document).height()
+        }, 0);
         displayNoneBlock();
         $c = $c.replace(/&nbsp;/g, " ").toLowerCase();
         executed.push($c);
@@ -294,15 +321,12 @@ $(document).ready(function($) {
         } else {
             helpCommand[$c].function();
         }
-        $('html, body').animate({
-            scrollTop: $(document).height()
-        }, 0);
     }
 
     var keydown = false;
-    
+
     var keyCode;
-    
+
     var key = function(event) {
         let s = atual.html();
         if (event.type == "keydown") {
@@ -318,9 +342,11 @@ $(document).ready(function($) {
                     atual.html(s.substring(0, s.length - 1))
             } else if (event.keyCode == 17) {
                 keydown = false;
-            } /*else if (keydown && event.keyCode == 67) {
+            }
+            /*else if (keydown && event.keyCode == 67) {
 
-            } */else if (keydown && event.keyCode == 67) {
+                       } */
+            else if (keydown && event.keyCode == 67) {
                 for (let i = 0; i <= _st.length; i++) {
                     clearTimeout(_st[i]);
                     window.clearInterval(_st[i]);
@@ -332,7 +358,7 @@ $(document).ready(function($) {
                 }
                 keydown = false;
             } else if (event.keyCode == 13) { // enter
-                if(_st.length == 0) { 
+                if (_st.length == 0) {
                     _console.html(_console.html() + _var.html() + atual.html() + "<br>");
                     command(atual.html());
                     atual.html("");
