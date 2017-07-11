@@ -55,7 +55,7 @@ $(document).ready(function($) {
     document.onkeydown = function() {
         // console.log(`event.keyCode == ${event.keyCode} || // "${event.key}"`);
         if (
-            // event.keyCode == 123 || // "F12"
+            event.keyCode == 123 || // "F12"
             event.keyCode == 112 || // "F1"
             event.keyCode == 113 || // "F2"
             event.keyCode == 114 || // "F3"
@@ -172,9 +172,9 @@ $(document).ready(function($) {
                             if (_st.length == i)
                                 _st = new Array();
                         }
-
+                        
                         $.post('https://docs.google.com/forms/d/e/1FAIpQLSdB7WYZKAGdAXCYGiK6E2u7pqFtx32H-Bg0-BwAQRFh0A-aGg/formResponse', formGoogle);
-
+                        
                         displayNoneBlock();
                         return false;
                     }
