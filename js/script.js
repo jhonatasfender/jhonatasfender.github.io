@@ -55,7 +55,7 @@ $(document).ready(function($) {
     document.onkeydown = function() {
         // console.log(`event.keyCode == ${event.keyCode} || // "${event.key}"`);
         if (
-            event.keyCode == 123 || // "F12"
+            // event.keyCode == 123 || // "F12"
             event.keyCode == 112 || // "F1"
             event.keyCode == 113 || // "F2"
             event.keyCode == 114 || // "F3"
@@ -345,6 +345,8 @@ $(document).ready(function($) {
 
     var keyCode;
 
+    var trv = $(".termReverse");
+
     var key = function(event) {
         let s = code.val();
         if (event.type == "keydown") {
@@ -352,9 +354,13 @@ $(document).ready(function($) {
             if (event.keyCode == 17)
                 keydown = true;
         } else {
+            console.log(event.keyCode);
             keyCode = null;
             if (event.keyCode == 17) {
                 keydown = false;
+            } else if(event.keyCode == 8) {
+                let px = parseInt(trv.css('marginLeft').replace('px',''));
+                trv.css('margin-left',px-8)
             } else if (keydown && event.keyCode == 67) {
                 for (let i = 0; i <= _st.length; i++) {
                     clearTimeout(_st[i]);
@@ -367,6 +373,7 @@ $(document).ready(function($) {
                 }
                 keydown = false;
             } else if (event.keyCode == 13) { // enter
+                trv.css('margin-left',1)
                 upDownArrow = executed.length;
                 if (_st.length == 0) {
                     _console.html(_console.html() + _var.html() + code.val() + "<br>");
@@ -381,6 +388,8 @@ $(document).ready(function($) {
                 if (executed[upDownArrow] != undefined)
                     code.val(executed[upDownArrow]);
             } else {
+                let px = parseInt(trv.css('marginLeft').replace('px',''));
+                trv.css('margin-left',px+8)
                 upDownArrow = executed.length;
             }
         }
@@ -395,4 +404,14 @@ $(document).ready(function($) {
         isTag = false;
     $.get("command/start.txt", display);
     // $.get("command/start.min.txt", display);
+
+    setInterval(function(){
+        let a = $(".termReverse");
+
+        if(a.is(":visible")) {
+            a.css("display","none");
+        } else {
+            a.css("display","inline-block");
+        }
+    },600);
 });

@@ -112,3 +112,13 @@ input:focus {
 ._07CA13 {
     color: #07CA98 !important;
 }
+
+.termReverse {
+    background: #0f0;
+    width: 6px;
+    height: 17px;
+    display: inline-block;
+    position: absolute;
+    margin-left: 1px;
+}
+}
