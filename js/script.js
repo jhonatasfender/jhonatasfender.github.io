@@ -223,6 +223,8 @@ $(document).ready(function($) {
                 "--freela": {
                     function: function() {
                         addConsoleText("Este comando ainda não foi desenvolvida alguma funcionalidade");
+
+                        $.get("command/git.txt", display);
                     }
                 },
                 "--client": {
