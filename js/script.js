@@ -55,7 +55,7 @@ $(document).ready(function($) {
     document.onkeydown = function() {
         // console.log(`event.keyCode == ${event.keyCode} || // "${event.key}"`);
         if (
-            event.keyCode == 123 || // "F12"
+            // event.keyCode == 123 || // "F12"
             event.keyCode == 112 || // "F1"
             event.keyCode == 113 || // "F2"
             event.keyCode == 114 || // "F3"
@@ -65,7 +65,7 @@ $(document).ready(function($) {
             event.keyCode == 118 || // "F7"
             event.keyCode == 119 || // "F8"
             event.keyCode == 120 || // "F9"
-            event.keyCode == 121 // "F10"
+            event.keyCode == 121    // "F10"
         ) {
             event.keyCode = 0;
             code.focus();
@@ -76,6 +76,7 @@ $(document).ready(function($) {
     var addConsoleText = function($s) {
         displayNoneBlock();
         _console.html(_console.html() + $s + "<br>");
+        animation();
     }
 
     var formGoogle = {
@@ -224,7 +225,7 @@ $(document).ready(function($) {
                     function: function() {
                         addConsoleText("Este comando ainda não foi desenvolvida alguma funcionalidade");
 
-                        $.get("command/git.txt", display);
+                        // $.get("command/git.txt", display);
                     }
                 },
                 "--client": {
@@ -239,6 +240,12 @@ $(document).ready(function($) {
         }
     }
 
+    var animation = function () {
+        $('html, body').animate({
+            scrollTop: $(document).height()
+        }, 0);        
+    }
+
     var _setTime;
 
     var display = function(t) {
@@ -249,9 +256,7 @@ $(document).ready(function($) {
         }      
         for (let i = 0; i <= t.length; i++) {
             _st.push(setTimeout(function() {  
-                $('html, body').animate({
-                    scrollTop: $(document).height()
-                }, 0);
+                animation();
                 _c++;
                 if (_t.substring(i, i+1) == "^" || isTag) {
                     tag += _t.substring(i, i+1) == "|" ? " " : _t.substring(i, i+1) == " " ? "&nbsp;" : _t.substring(i, i+1).replace(/(\^|\$)/, '');
@@ -300,18 +305,14 @@ $(document).ready(function($) {
             _var.css('display', 'none');
             atual.css('display', 'none');
         } else {
-            $('html, body').animate({
-                scrollTop: $(document).height()
-            }, 0);
+            animation();
             _var.css('display', 'inline-block');
             atual.css('display', 'inline-block');
         }
     }
 
     var command = function($c) {
-        $('html, body').animate({
-            scrollTop: $(document).height()
-        }, 0);
+        animation();
         displayNoneBlock();
         $c = $c.replace(/&nbsp;/g, " ").toLowerCase();
         executed.push($c);
@@ -354,7 +355,8 @@ $(document).ready(function($) {
             if (event.keyCode == 17)
                 keydown = true;
         } else {
-            console.log(event.keyCode);
+            console.log();
+            _didNotUndrerstandCount = 0;
             keyCode = null;
             if (event.keyCode == 17) {
                 keydown = false;
@@ -392,10 +394,31 @@ $(document).ready(function($) {
 
     code.keyup(key).keydown(key);
 
+    var _didNotUndrerstand = 1, _didNotUndrerstandCount = 0;
+
+    /**
+     * Em Desenvolvimento
+     *
+     * var _iT = setInterval(function() {
+     *     _didNotUndrerstandCount++;
+     *     if(_didNotUndrerstandCount == 1000) {
+     *         addConsoleText(`<p class='red' style="margin-left: 14%;font-size: 22px;">Olha sou o Jonatas caso você tenha duvida e só digitar o comando Help</p>`);
+     *     }
+     *     if(_didNotUndrerstandCount == 3000) {
+     *         addConsoleText(`<p class='red' style="margin-left: 14%;font-size: 22px;">Caso você tenha alguma sugestão, criticas, freelas, melhorias ou outras coisas.<br>Digite o comando contact para falar comigo!</p>`);
+     *     }
+     * },100);
+     */
+
     var _t, _c = 0,
         _st = new Array(),
         tag = "",
         isTag = false;
-    $.get("command/start.txt", display);
-    // $.get("command/start.min.txt", display);
+    let regexHr = /.+\?/g, hr = location.href.replace(regexHr,"");
+    if(regexHr.test(location.href)) {
+        addConsoleText(`<p class='red' style="margin-left: 14%;font-size: 22px;">Essa opção ainda está sendo desenvolvida!</p>`);
+    } else { 
+        $.get("command/start.txt", display);
+        // $.get("command/start.min.txt", display);
+    }
 });
