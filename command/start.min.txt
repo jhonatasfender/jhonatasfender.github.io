@@ -1,11 +1,11 @@
-                                                                                                                                       
-                                                   ^<span|class="green">000000000000  0000        0000</span>$                                                      
-   ^<span|class="red">0000     0000</span>$                                   ^<span|class="green">000000000000  0000        0000</span>$                                  ^<span|class="red">0000     0000</span>$   
-  ^<span|class="red">0000000 0000000</span>$                                  ^<span|class="green">0000    0000  0000        0000</span>$                                 ^<span|class="red">0000000 0000000</span>$  
- ^<span|class="red">00000000000000000</span>$                                 ^<span|class="green">0000          0000        0000</span>$                                ^<span|class="red">00000000000000000</span>$ 
- ^<span|class="red">00000000000000000</span>$                                 ^<span|class="green">00000000      0000        0000</span>$                                ^<span|class="red">00000000000000000</span>$ 
-  ^<span|class="red">000000000000000</span>$                                  ^<span|class="green">00000000      0000        0000</span>$                                 ^<span|class="red">000000000000000</span>$  
-    ^<span|class="red">00000000000</span>$                                    ^<span|class="green">0000          00000      00000</span>$                                   ^<span|class="red">00000000000</span>$    
-       ^<span|class="red">00000</span>$                                       ^<span|class="green">0000    0000  000000    000000</span>$                                      ^<span|class="red">00000</span>$       
-         ^<span|class="red">0</span>$                                         ^<span|class="green">000000000000   00000000000000</span>$                                         ^<span|class="red">0</span>$        
-                                                   ^<span|class="green">000000000000     0000000000</span>$                                                         
+                                                
+                                                
+   ^<span|class="red">0000     0000</span>$     
+  ^<span|class="red">0000000 0000000</span>$    
+ ^<span|class="red">00000000000000000</span>$   
+ ^<span|class="red">00000000000000000</span>$   
+  ^<span|class="red">000000000000000</span>$    
+    ^<span|class="red">00000000000</span>$      
+       ^<span|class="red">00000</span>$         
+         ^<span|class="red">0</span>$           
+                                                

@@ -55,7 +55,7 @@ $(document).ready(function($) {
     document.onkeydown = function() {
         // console.log(`event.keyCode == ${event.keyCode} || // "${event.key}"`);
         if (
-            // event.keyCode == 123 || // "F12"
+            event.keyCode == 123 || // "F12"
             event.keyCode == 112 || // "F1"
             event.keyCode == 113 || // "F2"
             event.keyCode == 114 || // "F3"
@@ -174,7 +174,22 @@ $(document).ready(function($) {
                                 _st = new Array();
                         }
                         
-                        $.post('https://docs.google.com/forms/d/e/1FAIpQLSdB7WYZKAGdAXCYGiK6E2u7pqFtx32H-Bg0-BwAQRFh0A-aGg/formResponse', formGoogle);
+                        $.ajax({
+                            url: 'https://docs.google.com/forms/d/e/1FAIpQLSdB7WYZKAGdAXCYGiK6E2u7pqFtx32H-Bg0-BwAQRFh0A-aGg/formResponse',
+                            type: 'POST',
+                            data: formGoogle,
+                            success: function (t) {
+                                addConsoleText(`
+                                    <p class='green' style="margin-left: 14%;font-size: 22px;">Mensagem enviado com sucesso!</p>
+                                    <p class='green' style="margin-left: 16%;font-size: 10px;">Por favor peço que aguarde que entraremos em contato!</p>
+                                `);
+                            },
+                            error: function () {
+                                console.log("error");
+                            }
+                        });
+                        
+                        // $.post('https://docs.google.com/forms/d/e/1FAIpQLSdB7WYZKAGdAXCYGiK6E2u7pqFtx32H-Bg0-BwAQRFh0A-aGg/formResponse', formGoogle);
                         
                         displayNoneBlock();
                         return false;
@@ -418,7 +433,7 @@ $(document).ready(function($) {
     if(regexHr.test(location.href)) {
         addConsoleText(`<p class='red' style="margin-left: 14%;font-size: 22px;">Essa opção ainda está sendo desenvolvida!</p>`);
     } else { 
-        $.get("command/start.txt", display);
-        // $.get("command/start.min.txt", display);
+        // $.get("command/start.txt", display);
+        $.get("command/start.min.txt", display);
     }
 });
