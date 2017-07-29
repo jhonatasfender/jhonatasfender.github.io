@@ -433,7 +433,7 @@ $(document).ready(function($) {
     if(regexHr.test(location.href)) {
         addConsoleText(`<p class='red' style="margin-left: 14%;font-size: 22px;">Essa opção ainda está sendo desenvolvida!</p>`);
     } else { 
-        // $.get("command/start.txt", display);
-        $.get("command/start.min.txt", display);
+        $.get("command/start.txt", display);
+        // $.get("command/start.min.txt", display);
     }
 });
