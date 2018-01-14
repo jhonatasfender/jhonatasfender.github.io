@@ -6,7 +6,8 @@ body {
     background-color: #000;
     font-family: courier, monospace;
     color: #fff;
-    overflow: hidden;
+    overflow: auto;
+    overflow-y: hidden;
     cursor: url("cursor.cur");
 }
 

@@ -8,7 +8,7 @@
            como usar: ^<span|class="green">work</span>$ [--now] [--past] [--freela] [--client] [args]                                                             
                 ^<span|class="blue">1º</span>$ - --now => O trabalho CLT que estou trabalhando atualmente.                                                         
                 ^<span|class="blue">2º</span>$ - --past => Os trabalhos CLTs e por aonde passei.                                                                   
-                ^<span|class="blue">2º</span>$ - --freela => Os trabalhos freela que estou fazendo.                                                                
-                ^<span|class="blue">2º</span>$ - --client => Os Clientes que já atendi e os que estou atendendo.                                                   
+                ^<span|class="blue">3º</span>$ - --freela => Os trabalhos freela que estou fazendo.                                                                
+                ^<span|class="blue">4º</span>$ - --client => Os Clientes que já atendi e os que estou atendendo.                                                   
        ^<span|class="blue">5º</span>$ - ^<span|class="green">clear</span>$ => Este comando limpa a tela.                                                           
 ^<br>$

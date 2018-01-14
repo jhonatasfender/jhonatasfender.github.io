@@ -17,7 +17,7 @@ if (!(location.hostname === "localhost" || location.hostname === "127.0.0.1")) {
 
 
 $(document).ready(function($) {
-    var code = $("#code"),
+    let code = $("#code"),
         _var = $("#var"),
         atual = $("#atual"),
         _console = $("#console");
@@ -27,7 +27,7 @@ $(document).ready(function($) {
         code.focus();
     });
 
-    var mensagem = "";
+    let mensagem = "";
 
     function clickIE() {
         if (document.all) {
@@ -55,7 +55,7 @@ $(document).ready(function($) {
     document.onkeydown = function() {
         // console.log(`event.keyCode == ${event.keyCode} || // "${event.key}"`);
         if (
-            event.keyCode == 123 || // "F12"
+            // event.keyCode == 123 || // "F12"
             event.keyCode == 112 || // "F1"
             event.keyCode == 113 || // "F2"
             event.keyCode == 114 || // "F3"
@@ -73,20 +73,20 @@ $(document).ready(function($) {
         }
     }
 
-    var addConsoleText = function($s) {
+    let addConsoleText = function($s) {
         displayNoneBlock();
         _console.html(_console.html() + $s + "<br>");
         animation();
     }
 
-    var formGoogle = {
+    let formGoogle = {
         "entry.684703253": "",
         "entry.1084554677": "",
         "entry.17621438": "",
         "entry.240145468": ""
     };
 
-    var contact = [{
+    let contact = [{
             input: "name",
             text: "Digite seu Nome: ",
             value: "",
@@ -112,7 +112,7 @@ $(document).ready(function($) {
         }
     ];
 
-    var social = {
+    let social = {
         "1": {
             name: "linkedin",
             link: "https://www.linkedin.com/in/jhonatasfender/"
@@ -132,13 +132,13 @@ $(document).ready(function($) {
         
     }
 
-    var setTimeContact = 100,
+    let setTimeContact = 100,
         countContact = 0,
         countStringContact = 0;
 
-    var clearTimeContact = new Array();
+    let clearTimeContact = new Array();
 
-    var helpCommand = {
+    let helpCommand = {
         clear: {
             nameCommand: "clear",
             function: function() {
@@ -255,15 +255,15 @@ $(document).ready(function($) {
         }
     }
 
-    var animation = function () {
+    let animation = function () {
         $('html, body').animate({
             scrollTop: $(document).height()
         }, 0);        
     }
 
-    var _setTime;
+    let _setTime;
 
-    var display = function(t) {
+    let display = function(t) {
         _t = t;
         _c = 0;
         if (_st.length != 0) {
@@ -313,9 +313,9 @@ $(document).ready(function($) {
         }, _st.length * 2);
     }
 
-    var executed = new Array(),upDownArrow = executed.length;
+    let executed = new Array(),upDownArrow = executed.length;
 
-    var displayNoneBlock = function($bool) {
+    let displayNoneBlock = function($bool) {
         if ((_var.is(":visible") && atual.is("visible")) || $bool == 1) {
             _var.css('display', 'none');
             atual.css('display', 'none');
@@ -326,7 +326,7 @@ $(document).ready(function($) {
         }
     }
 
-    var command = function($c) {
+    let command = function($c) {
         animation();
         displayNoneBlock();
         $c = $c.replace(/&nbsp;/g, " ").toLowerCase();
@@ -359,11 +359,11 @@ $(document).ready(function($) {
         }
     }
 
-    var keydown = false;
+    let keydown = false;
 
-    var keyCode;
+    let keyCode;
 
-    var key = function(event) {
+    let key = function(event) {
         let s = code.val();
         if (event.type == "keydown") {
             keyCode = event;
@@ -409,12 +409,12 @@ $(document).ready(function($) {
 
     code.keyup(key).keydown(key);
 
-    var _didNotUndrerstand = 1, _didNotUndrerstandCount = 0;
+    let _didNotUndrerstand = 1, _didNotUndrerstandCount = 0;
 
     /**
      * Em Desenvolvimento
      *
-     * var _iT = setInterval(function() {
+     * let _iT = setInterval(function() {
      *     _didNotUndrerstandCount++;
      *     if(_didNotUndrerstandCount == 1000) {
      *         addConsoleText(`<p class='red' style="margin-left: 14%;font-size: 22px;">Olha sou o Jonatas caso você tenha duvida e só digitar o comando Help</p>`);
@@ -425,7 +425,7 @@ $(document).ready(function($) {
      * },100);
      */
 
-    var _t, _c = 0,
+    let _t, _c = 0,
         _st = new Array(),
         tag = "",
         isTag = false;
@@ -436,4 +436,15 @@ $(document).ready(function($) {
         $.get("command/start.txt", display);
         // $.get("command/start.min.txt", display);
     }
+
+    let _lr = function() {
+        $("body").css('width', ($(this).width()) + "%");
+        if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            $("body").css('overflow-y', "auto");            
+        }
+        $("body, #var, #code").css('font-size', (($(this).width() / 90.0) * 7) + "px");
+    }
+
+    $(window).load(_lr);
+    // $(window).resize(_lr);
 });

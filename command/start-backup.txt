@@ -1,0 +1,39 @@
+
+                                  000000000000 0000        0000         00000000   0000    0000   00000000    
+                 0000     0000    000000000000 0000        0000       000000000000 00000  00000 000000000000    0000     0000 
+                0000000 0000000   0000    0000 0000        0000       0000    0000 000000000000 0000    0000   0000000 0000000 
+               00000000000000000  0000         0000        0000       0000    0000 0000 00 0000 0000    0000  00000000000000000 
+               00000000000000000  00000000     0000        0000       0000    0000 0000    0000 0000    0000  00000000000000000 
+                000000000000000   00000000     0000        0000       000000000000 0000    0000 0000    0000   000000000000000 
+                  00000000000     0000         00000      00000       000000000000 0000    0000 0000    0000     00000000000 
+                     00000        0000    0000 000000    000000       0000    0000 0000    0000 0000    0000        00000 
+                       0          000000000000  00000000000000        0000    0000 0000    0000 000000000000          0
+                                  000000000000    0000000000          0000    0000 0000    0000   00000000
+
+           000000000000  00000000000     00000000   00000000000   00000000000     00000000   0000    0000    00000000   00000000000
+           0000000000000 000000000000  000000000000 000000000000  000000000000  000000000000 00000  00000  000000000000 000000000000
+           0000     0000 0000    0000  0000    0000 0000     0000 0000    0000  0000    0000 000000000000  0000    0000 0000    0000
+           0000     0000 0000    0000  0000    0000 0000          0000    0000  0000    0000 0000 00 0000  0000    0000 0000    0000
+           0000000000000 000000000000  0000    0000 0000          000000000000  0000    0000 0000    0000  0000    0000 000000000000
+           000000000000  00000000000   0000    0000 0000   000000 00000000000   000000000000 0000    0000  000000000000 00000000000
+           0000          0000  0000    0000    0000 0000     0000 0000  0000    000000000000 0000    0000  000000000000 0000  0000
+           0000          0000   0000   0000    0000 0000     0000 0000   0000   0000    0000 0000    0000  0000    0000 0000   0000
+           0000          0000    0000  000000000000 0000000000000 0000    0000  0000    0000 0000    0000  0000    0000 0000    0000
+           0000          0000     0000   00000000   0000000000000 0000     0000 0000    0000 0000    0000  0000    0000 0000     0000
+
+     Eu sou o Jonatas, sou programador, gosto muito de programar e gosto bastante de desafios, e nas minhas horas vagas eu toco guitarra  
+     nos meus momentos vagos. Criei um amostragem dos meus conhecimentos de uma forma diferente, para que você me conheça melhor digi- 
+     alguns comando.
+       1º - help => Este comando mostra todas a listagens de comandos abaixo
+       2º - contact => Este comando será solicitado alguns dados e você irá digitando, nele você poderá ver e encontrar
+                       em contato comigo, caso tenha interesse.
+           como usar: contact [--networks] [args]
+                1º - --networks => Essa opção apareseta todas as minhas redes sociais.
+       3º - knowledge => Este comando apresentará os meus conhecintos nas linguagens e o nivel do meu conhecimento.
+       4º - work => Este comando mostrará os meus trabalho.
+           como usar: work [--now] [--past] [--freela] [--client] [args]
+                1º - --now => O trabalho CLT que estou trabalhando atualmente.
+                2º - --past => Os trabalhos CLTs e por aonde passei.
+                2º - --freela => Os trabalhos freela que estou fazendo.
+                2º - --client => Os Clientes que já atendi e os que estou atendendo.
+       5º - clear => Este comando limpa a tela.
