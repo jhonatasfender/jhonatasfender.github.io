@@ -189,8 +189,6 @@ $(document).ready(function($) {
                             }
                         });
                         
-                        // $.post('https://docs.google.com/forms/d/e/1FAIpQLSdB7WYZKAGdAXCYGiK6E2u7pqFtx32H-Bg0-BwAQRFh0A-aGg/formResponse', formGoogle);
-                        
                         displayNoneBlock();
                         return false;
                     }
@@ -439,12 +437,13 @@ $(document).ready(function($) {
 
     let _lr = function() {
         $("body").css('width', ($(this).width()) + "%");
+        // $("body, #var, #code").css('font-size', ($(this).width() / 90.0) + "px");
         if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
             $("body").css('overflow-y', "auto");            
+            $("body, #var, #code").css('font-size', (($(this).width() / 90.0) * 7) + "px");
         }
-        $("body, #var, #code").css('font-size', (($(this).width() / 90.0) * 7) + "px");
     }
 
     $(window).load(_lr);
-    // $(window).resize(_lr);
+    $(window).resize(_lr);
 });
