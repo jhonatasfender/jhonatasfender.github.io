@@ -188,7 +188,7 @@ $(document).ready(function($) {
                                 console.log("error");
                             }
                         });
-                        
+
                         displayNoneBlock();
                         return false;
                     }
@@ -431,7 +431,7 @@ $(document).ready(function($) {
     if(regexHr.test(location.href)) {
         addConsoleText(`<p class='red' style="margin-left: 14%;font-size: 22px;">Essa opção ainda está sendo desenvolvida!</p>`);
     } else { 
-        $.get("command/start.txt", display);
+        $.get("command/start-pt-br.txt", display);
         // $.get("command/start.min.txt", display);
     }
 
@@ -443,6 +443,9 @@ $(document).ready(function($) {
             $("body, #var, #code").css('font-size', (($(this).width() / 90.0) * 7) + "px");
         }
     }
+    $.get("command/download-start.txt",function(h,n) {
+        $("#download").html(h.replace(/\n/g,"<br>").replace(/\s/g,"&nbsp"));
+    });
 
     $(window).load(_lr);
     $(window).resize(_lr);

@@ -6,8 +6,6 @@ body {
     background-color: #000;
     font-family: courier, monospace;
     color: #fff;
-    overflow: auto;
-    overflow-y: hidden;
     cursor: url("cursor.cur");
 }
 
@@ -22,6 +20,13 @@ input {
 
 span::selection { 
     background: black !important; 
+}
+
+#download { 
+    position: fixed;
+    top: 0;
+    height: auto;
+    font-size: 8px;
 }
 
 br::selection { 
