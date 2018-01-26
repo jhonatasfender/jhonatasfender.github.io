@@ -23,6 +23,7 @@ span::selection {
 }
 
 #download { 
+    display: none;
     position: fixed;
     top: 0;
     height: auto;
