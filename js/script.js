@@ -409,20 +409,6 @@ $(document).ready(function($) {
 
     let _didNotUndrerstand = 1, _didNotUndrerstandCount = 0;
 
-    /**
-     * Em Desenvolvimento
-     *
-     * let _iT = setInterval(function() {
-     *     _didNotUndrerstandCount++;
-     *     if(_didNotUndrerstandCount == 1000) {
-     *         addConsoleText(`<p class='red' style="margin-left: 14%;font-size: 22px;">Olha sou o Jonatas caso você tenha duvida e só digitar o comando Help</p>`);
-     *     }
-     *     if(_didNotUndrerstandCount == 3000) {
-     *         addConsoleText(`<p class='red' style="margin-left: 14%;font-size: 22px;">Caso você tenha alguma sugestão, criticas, freelas, melhorias ou outras coisas.<br>Digite o comando contact para falar comigo!</p>`);
-     *     }
-     * },100);
-     */
-
     let _t, _c = 0,
         _st = new Array(),
         tag = "",
