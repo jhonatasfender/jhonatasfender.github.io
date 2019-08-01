@@ -11,9 +11,6 @@ export class PrintScreenService {
   public init(): Observable<any> {
     const headers = new HttpHeaders().set('Content-Type', 'text/plain; charset=utf-8');
 
-    return this.http.get(
-      `/assets/text-ascii/init.txt`,
-      { headers: headers, responseType: 'text' }
-    );
+    return this.http.get(`/assets/text-ascii/init.txt`, { headers: headers, responseType: 'text' })
   }
 }

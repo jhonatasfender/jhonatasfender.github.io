@@ -8,13 +8,14 @@ import { PrintScreen } from './print-screen';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit {
   @ViewChild('terminal', { static: true }) terminal: ElementRef;
 
-  public title = 'terminal-web';
+  public title: string = 'terminal-web';
+  public input: string = "";
+  public cursor: number = 0;
 
   public term: ITerminalApp;
   public container: HTMLElement;
@@ -33,46 +34,64 @@ export class AppComponent implements OnInit {
       fontFamily: `'Fira Mono', monospace`,
       fontSize: 15,
       rendererType: 'dom', // default is canvas
-      rows: parseInt((window.screen.height / 19).toString())
+      rows: parseInt((window.screen.height / 21.4).toString())
     });
+    console.log(window.screen.height);
 
     let printInit = new PrintScreen(this.term, this.printScreenService)
-    console.log(printInit.init());
+    printInit.init().add(() => {
 
-    this.term.prompt = () => {
-      this.term.write('\r\n' + this.shellprompt);
-    };
+      this.term.prompt = () => {
+        this.term.write('\r\n' + this.shellprompt);
+      };
 
+      this.term.focus();
 
-    this.term.focus();
+      this.term.open(this.terminal.nativeElement);
 
-    // this.term.setTheme({
-    //   background: '#333',
-    //   red: '#F00',
-    //   brightRed: '#F22',
-    //   // ... (can be a partial list)
-    // });
+      this.term.prompt();
 
-    this.term.open(this.terminal.nativeElement);
+      this.term.on('key', (key, ev: KeyboardEvent) => {
+        // @ts-ignore
+        let printable = !ev.altKey && !ev.altGraphKey && !ev.ctrlKey && !ev.metaKey;
 
-    this.term.prompt();
-    this.term.on('key', (key, ev: KeyboardEvent) => {
-      // @ts-ignore
-      let printable = !ev.altKey && !ev.altGraphKey && !ev.ctrlKey && !ev.metaKey;
+        this.controllingKeyboardArrows(ev)
 
-      if (ev.keyCode == 13) {
-        this.term.prompt();
-      } else if (ev.keyCode == 8) {
-        this.term.write('\b \b');
-      } else if (printable) {
-        this.term.write(key);
+        if (ev.keyCode == 13) {
+          this.term.write(colors.red("\r\nYou typed: '" + this.input + "'\r\n"));
+          this.term.prompt();
+          this.input = "";
+        } else if (ev.keyCode == 8) {
+          this.validatingIfCanDeleteLine() && this.term.write('\b \b');
+        } else if (printable) {
+          this.term.write(key);
+          this.input += key;
+        }
+        this.term.fit();
+      });
+
+      this.term.on('paste', function (data, ev) {
+        this.term.write(data);
+      });
+
+      window.addEventListener("load", () => {
+        this.term.fit();
+      });
+    });
+  }
+
+  public controllingKeyboardArrows(ev) {
+    if (ev.keyCode >= 32 && ev.keyCode <= 40) {
+      if (ev.keyCode === 39 || ev.keyCode === 37) {
+        // this.term.write('\x1b[<N')
       }
-      this.term.fit();
-    });
+      return;
+    }
+  }
 
-    this.term.on('paste', function (data, ev) {
-      this.term.write(data);
-    });
+  private validatingIfCanDeleteLine(): boolean {
+    let textIsNotDelete = this.term.buffer.getLine(this.term.buffer.cursorY).translateToString();
+    return textIsNotDelete.replace(/\s|\n|\t|\r/g, '') !== 'jhonatas@fender:/$'
   }
 
   @HostListener('window:resize', ['$event'])

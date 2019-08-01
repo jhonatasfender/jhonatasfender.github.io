@@ -1,6 +1,7 @@
 import { ITerminalApp } from './ITerminalApp';
 import { PrintScreenService } from './print-screen.service';
 import * as colors from "ansi-colors";
+import { Observable } from 'rxjs';
 
 export class PrintScreen {
     constructor(
@@ -9,14 +10,8 @@ export class PrintScreen {
     ) { }
 
     public init() {
-        let out = null;
-        this.printScreenService.init().subscribe((text) => {
-            out = text.replace(/\$/g, colors.red.bold('$'));
-            out = text.replace(/\//g, colors.green.bold('/'))
-            out = text.replace(/\\/g, colors.green.bold('\\'))
-            out = text.replace(/_/g, colors.green.bold('_'))
-            out = text.replace(/\|/g, colors.green.bold('|'))
+        return this.printScreenService.init().subscribe((text) => {
+            this.term.write(colors.blue.bold(text));
         })
-        return out;
     }
 }
