@@ -55,9 +55,12 @@ export class AppComponent implements OnInit {
         // @ts-ignore
         let printable = !ev.altKey && !ev.altGraphKey && !ev.ctrlKey && !ev.metaKey;
 
-        this.controllingKeyboardArrows(ev)
-
-        if (ev.keyCode == 13) {
+        if (ev.keyCode >= 33 && ev.keyCode <= 40) {
+          if (ev.keyCode === 39 || ev.keyCode === 37) {
+            this.term.write('\x1b[<N')
+          }
+          return;
+        } else if (ev.keyCode == 13) {
           this.term.write(colors.red("\r\nYou typed: '" + this.input + "'\r\n"));
           this.term.prompt();
           this.input = "";
@@ -78,15 +81,6 @@ export class AppComponent implements OnInit {
         this.term.fit();
       });
     });
-  }
-
-  public controllingKeyboardArrows(ev) {
-    if (ev.keyCode >= 32 && ev.keyCode <= 40) {
-      if (ev.keyCode === 39 || ev.keyCode === 37) {
-        // this.term.write('\x1b[<N')
-      }
-      return;
-    }
   }
 
   private validatingIfCanDeleteLine(): boolean {
