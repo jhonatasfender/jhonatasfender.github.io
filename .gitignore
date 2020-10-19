@@ -1,0 +1,7 @@
+node_modules/
+*.log
+*.tgz
+/.idea/
+/react-xterm.iml
+build
+package-lock.json
