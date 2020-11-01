@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Terminal } from 'xterm';
-// @ts-ignore
-// import * as Xterm from "xterm/lib/xterm";
+import { FitAddon } from 'xterm-addon-fit';
 
 // tslint:disable-next-line: no-var-requires
 const classNames = require('classnames')
@@ -25,45 +24,55 @@ export interface IXtermState {
 }
 
 export default class XTerm extends React.Component<IXtermProps, IXtermState> {
-    private xterm: any;
+    private xterm: Terminal | null;
     private container: HTMLDivElement | null;
+    private fitAddon: FitAddon;
+
     constructor(props: IXtermProps) {
         super(props);
 
         this.xterm = null;
         this.container = null
 
+        this.fitAddon = new FitAddon();
+
         this.state = {
             isFocused: false
         };
     }
 
-    componentDidMount() {
+    public componentDidMount(): void {
         this.xterm = new Terminal(this.props.options);
+
+        this.xterm.loadAddon(this.fitAddon)
+
         this.xterm.open(this.container as HTMLDivElement);
-        // this.xterm.on('focus', this.focusChanged.bind(this, true));
-        // this.xterm.on('blur', this.focusChanged.bind(this, false));
+        this.xterm.focus()
+        this.xterm.blur()
         if (this.props.onContextMenu) {
-            this.xterm.element.addEventListener('contextmenu', this.onContextMenu.bind(this));
+            this.xterm.element?.addEventListener('contextmenu', this.onContextMenu.bind(this));
         }
         if (this.props.onInput) {
-            this.xterm.on('data', this.onInput);
+            this.xterm.onData(this.onInput);
         }
         if (this.props.value) {
             this.xterm.write(this.props.value);
         }
+
+        this.fitAddon.fit()
     }
 
-    componentWillUnmount() {
-        // is there a lighter-weight way to remove the cm instance?
+    public componentWillUnmount(): void {
         if (this.xterm) {
-            // this.xterm.destroy();
             this.xterm = null;
         }
     }
 
-    shouldComponentUpdate(nextProps: any, nextState: any) {
-        // console.log('shouldComponentUpdate', nextProps.hasOwnProperty('value'), nextProps.value != this.props.value);
+    public getFitAddon(): FitAddon {
+        return this.fitAddon
+    }
+
+    public shouldComponentUpdate(nextProps: any, nextState: any): boolean {
         if (nextProps.hasOwnProperty('value') && nextProps.value !== this.props.value) {
             if (this.xterm) {
                 this.xterm.clear();
@@ -75,20 +84,16 @@ export default class XTerm extends React.Component<IXtermProps, IXtermState> {
         return false;
     }
 
-    getTerminal(): any {
-        return this.xterm;
+    public getTerminal(): Terminal {
+        return this.xterm as Terminal;
     }
 
-    write(data: any) {
+    public write(data: any): void {
         this.xterm && this.xterm.write(data);
     }
 
-    writeln(data: any) {
+    public writeln(data: any): void {
         this.xterm && this.xterm.writeln(data);
-    }
-
-    focus() {
-        this.xterm?.focus();
     }
 
     focusChanged(focused: any) {
@@ -98,11 +103,7 @@ export default class XTerm extends React.Component<IXtermProps, IXtermState> {
         this.props.onFocusChange && this.props.onFocusChange(focused);
     }
 
-    onInput(data: any) {
-        this.props.onInput && this.props.onInput(data);
-    }
-
-    resize(cols: number, rows: number) {
+    public resize(cols: number, rows: number): void {
         this.xterm && this.xterm.resize(Math.round(cols), Math.round(rows));
     }
 
@@ -118,7 +119,12 @@ export default class XTerm extends React.Component<IXtermProps, IXtermState> {
         this.props.onContextMenu && this.props.onContextMenu(e);
     }
 
-    render() {
+    private onInput(data: any): void {
+        this.props.onInput && this.props.onInput(data);
+    }
+
+
+    public render(): JSX.Element {
         const terminalClassName = classNames('ReactXTerm', this.state.isFocused ? 'ReactXTerm--focused' : null, this.props.className);
         return <div ref={ref => { this.container = ref }} className={terminalClassName} />;
     }
