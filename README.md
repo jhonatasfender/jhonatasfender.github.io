@@ -1,6 +1,5 @@
 # react-xterm-sample
 
 
-This is a `react` project and uses simple react component from [react-xterm](https://github.com/farfromrefug/react-xterm/) which is a basic implementation of [xterm.js](https://github.com/xtermjs/xterm.js)
 
-
+https://dev.toppers.jp/trac_user/contrib/browser/EcnlProtoTool/trunk/webapp/webmrbc/xterm/src/xterm.js?rev=270#L107

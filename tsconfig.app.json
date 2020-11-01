@@ -1,0 +1,17 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "paths": {
+            "xtermjs": [
+                "node_modules/xterm/lib/xterm.js"
+            ]
+        }
+    },
+    "include": [
+        "src/**/*.ts"
+    ],
+    "exclude": [
+        "src/test.ts",
+        "src/**/*.spec.ts"
+    ]
+}
