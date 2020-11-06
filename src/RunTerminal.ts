@@ -1,11 +1,18 @@
 import { blue, green, red } from "ansi-colors";
 import { Terminal } from "xterm";
 import XTerm from "./XTermJs";
+import parseArgvString from 'string-to-argv';
+import { Command } from "./commands/Command";
+
+export const NAME = "jhonatas@fender"
+export const TWO_POINTS = ":"
+export const BAR = "/"
+export const DOLLAR_SIGN = "$ "
 
 export default class RunTerminal {
     private term: Terminal
 
-    private shellprompt: string = green.bold('jhonatas@fender') + ':' + blue.bold('/') + '$ ';
+    private shellprompt: string = green.bold(NAME) + TWO_POINTS + blue.bold(BAR) + DOLLAR_SIGN;
 
     constructor(public xterm: XTerm) {
         this.term = xterm.getTerminal() as Terminal;
@@ -23,19 +30,19 @@ export default class RunTerminal {
             .then((text: string) => text?.split(/\n/g))
             .then((text: string[]) => {
                 for (const draw of text) {
-                    this.xterm.writeln(red.bold(draw))
+                    this.term.writeln(red.bold(draw.substring(0, this.term.cols)))
                 }
                 this.init()
             })
             .catch((e: any) => {
                 console.log('err', e)
             });
-        // this.init()
     }
 
     public init() {
-        this.xterm.writeln('');
+        this.xterm.write('');
         this.prompt();
+
         this.term.onKey((event: { key: string; domEvent: KeyboardEvent; }) => {
             const { key, domEvent } = event
             this.key(key, domEvent)
@@ -44,6 +51,11 @@ export default class RunTerminal {
         // this.term.on('paste', (data, ev: KeyboardEvent) => {
         //     this.xterm.write(data);
         // });
+
+
+        // this.term.onCursorMove((arg: any) => {
+        //     console.log(arg)
+        // })
 
         this.onResize()
         window.addEventListener('resize', () => {
@@ -56,18 +68,42 @@ export default class RunTerminal {
             !ev!!.altKey && !ev!!.ctrlKey && !ev!!.metaKey
         );
 
-        if (ev.keyCode >= 33 && ev.keyCode <= 40) {
-            if (ev.keyCode === 39 || ev.keyCode === 37) {
-                this.term.write('\x1b[<N')
+        const code = key.charCodeAt(0)
+
+        if (code >= 33 && code <= 40) {
+            if (code === 39 || code === 37) {
+                this.xterm.write('\x1b[<N')
             }
             return;
-        } else if (ev!!.keyCode === 13) {
-            this.prompt();
-        } else if (ev!!.keyCode === 8) {
-            this.validatingIfCanDeleteLine() && this.term.write('\b \b');
+        } else if (code === 3) {
+            this.prompt()
+        } else if (code === 13) {
+            const cursor = this.getCursor()
+            const current = this.term.buffer.active.getLine(cursor)
+            const command = current?.translateToString().replace(this.startOnNewLine(), '') as string
+
+            console.log(cursor, this.term.buffer.active.length, this.term.buffer.active.cursorY)
+            Command.init(parseArgvString(command), this.term).then(() => {
+                this.prompt()
+                this.term.focus()
+            })
+        } else if (code === 127) {
+            this.validatingIfCanDeleteLine() && this.xterm.write('\b \b');
         } else if (printable) {
             this.xterm.write(key);
         }
+    }
+
+    private getCursor(): number {
+        for (let i = this.term.buffer.active.length; i >= 0; i--) {
+            const active = this.term.buffer.active.getLine(i)
+            const translate = active?.translateToString().trim()
+            console.log(i, translate)
+            if (translate && translate !== "") {
+                return i
+            }
+        }
+        return 0
     }
 
     private onResize() {
@@ -82,7 +118,7 @@ export default class RunTerminal {
             const rows = Math.max(Math.floor(height / cellHeight), 10) + 2
             const cols = Math.max(geometry.cols, 10)
 
-            if (this.term.rows !== rows || this.term.cols !== cols) {
+            if ((rows && this.term.rows !== rows) || (cols && this.term.cols !== cols)) {
                 this.term.resize(cols, rows)
             }
         }
@@ -92,9 +128,15 @@ export default class RunTerminal {
         this.xterm.write('\r\n' + this.shellprompt);
     }
 
+    private startOnNewLine(): string {
+        return NAME + TWO_POINTS + BAR + DOLLAR_SIGN;
+    }
+
     private validatingIfCanDeleteLine(): boolean {
         const currentLine = this.term.buffer.active.getLine(this.term.buffer.active.cursorY)
-        return currentLine?.translateToString().replace(/\s|\n|\t|\r/g, '') !== 'jhonatas@fender:/$'
+        const rx = /\s|\n|\t|\r/g
+
+        return currentLine?.translateToString().replace(rx, '') !== this.startOnNewLine().replace(rx, '')
     }
 
 }
