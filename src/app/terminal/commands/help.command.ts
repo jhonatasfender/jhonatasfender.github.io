@@ -17,14 +17,19 @@ export class HelpCommand extends BaseTerminalCommand {
   }
 
   public override execute(): void {
-    const helpMessage: string = this.translationService.instant('COMMANDS.HELP').toString();
-    this.terminal.addLine(helpMessage);
+    const header = this.translationService.instant('TIPS.HELP_HEADER').toString();
+    this.terminal.addLine(header);
+    this.terminal.addLine('='.repeat(header.length));
 
     this.availableCommands.forEach((command: ITerminalCommand, name: string) => {
       const description: string = command.getDescription();
-      const paddedName: string = name.padEnd(8);
-      this.terminal.addLine(`${paddedName} - ${description}`);
+      const paddedName: string = name.padEnd(12);
+      this.terminal.addLine(`${paddedName} ${description}`);
     });
+
+    this.terminal.addLine('');
+    const footer = this.translationService.instant('TIPS.HELP_FOOTER').toString();
+    this.terminal.addLine(footer);
   }
 
   public override getDescription(): string {

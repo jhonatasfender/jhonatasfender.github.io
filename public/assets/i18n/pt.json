@@ -1,16 +1,16 @@
 {
   "WELCOME": {
-    "MESSAGE": "Bem-vindo ao meu portfólio!",
-    "HELP": "Este é um terminal interativo. Para navegar:"
+    "MESSAGE": "Bem-vindo ao meu portfólio interativo! 👋",
+    "HELP": "Este é um terminal interativo onde você pode explorar meu trabalho e experiência. Para navegar, use os comandos disponíveis abaixo:"
   },
   "COMMANDS": {
-    "HELP": "Lista todos os comandos disponíveis",
-    "ABOUT": "Conheça mais sobre mim",
-    "SKILLS": "Minhas habilidades técnicas",
-    "PROJECTS": "Projetos que desenvolvi",
-    "CONTACT": "Informações de contato",
-    "CLEAR": "Limpa a tela do terminal",
-    "LANG": "Muda o idioma"
+    "HELP": "📚 Mostra todos os comandos disponíveis e suas descrições",
+    "ABOUT": "👨‍💻 Conheça mais sobre mim",
+    "SKILLS": "⚡ Minhas habilidades técnicas",
+    "PROJECTS": "🚀 Projetos que desenvolvi",
+    "CONTACT": "📧 Informações de contato",
+    "CLEAR": "🧹 Limpa a tela do terminal",
+    "LANG": "🌐 Muda o idioma"
   },
   "ABOUT": {
     "TITLE": "Sobre mim:",
@@ -37,17 +37,21 @@
     "LINKEDIN": "LinkedIn: https://www.linkedin.com/in/jhonatasfender/"
   },
   "ERRORS": {
-    "COMMAND_NOT_FOUND": "Comando não encontrado: {{command}}"
+    "COMMAND_NOT_FOUND": "❌ Ops! O comando '{{command}}' não foi encontrado. Digite 'help' para ver os comandos disponíveis."
   },
   "LANGUAGE": {
-    "CHANGED": "Idioma alterado para {{lang}}",
-    "CURRENT": "Idioma atual: {{lang}}",
-    "AVAILABLE": "Idiomas disponíveis:",
-    "EN": "Inglês",
-    "PT": "Português"
+    "CHANGED": "✅ Idioma alterado com sucesso para {{lang}}",
+    "CURRENT": "🌐 Idioma atual: {{lang}}",
+    "AVAILABLE": "📚 Idiomas disponíveis:",
+    "EN": "🇺🇸 Inglês",
+    "PT": "🇧🇷 Português",
+    "USAGE": "💡 Uso: lang [pt|en]",
+    "INVALID": "❌ Idioma inválido. Use 'lang' para ver os idiomas disponíveis."
   },
   "TIPS": {
-    "COMMAND": "Dica",
-    "ENTER": "Digite um comando e pressione Enter para executar"
+    "COMMAND": "💡 Dica",
+    "ENTER": "Digite um comando e pressione Enter para executar",
+    "HELP_HEADER": "📋 Comandos Disponíveis:",
+    "HELP_FOOTER": "💡 Dica: Você pode usar a tecla Tab para autocompletar comandos"
   }
 }

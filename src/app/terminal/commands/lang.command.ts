@@ -4,6 +4,8 @@ import { TerminalComponent } from '../terminal.component';
 import { Inject } from '@angular/core';
 
 export class LangCommand extends BaseTerminalCommand {
+  private readonly validLanguages = ['en', 'pt'];
+
   constructor(
     terminal: TerminalComponent,
     @Inject(TRANSLATION_SERVICE) private translateService: ITranslationService
@@ -13,15 +15,21 @@ export class LangCommand extends BaseTerminalCommand {
 
   public execute(): void {
     const currentLang = this.translateService.getCurrentLang();
-    const availableLangs = this.translateService.getAvailableLangs();
+    const availableLangs = this.validLanguages;
 
     this.terminal.addLine(this.translateService.instant('LANGUAGE.CURRENT', { lang: currentLang }).toString());
+    this.terminal.addLine('');
+
     this.terminal.addLine(this.translateService.instant('LANGUAGE.AVAILABLE').toString());
+    this.terminal.addLine('='.repeat(30));
 
     availableLangs.forEach((lang: string) => {
       const langName = this.translateService.instant(`LANGUAGE.${lang.toUpperCase()}`);
-      this.terminal.addLine(`- ${lang} (${langName.toString()})`);
+      this.terminal.addLine(`- ${lang} ${langName.toString()}`);
     });
+
+    this.terminal.addLine('');
+    this.terminal.addLine(this.translateService.instant('LANGUAGE.USAGE').toString());
   }
 
   public getDescription(): string {
@@ -29,11 +37,14 @@ export class LangCommand extends BaseTerminalCommand {
   }
 
   public changeLanguage(lang: string): void {
-    if (this.translateService.getAvailableLangs().includes(lang)) {
-      this.translateService.use(lang);
-      this.terminal.addLine(this.translateService.instant('LANGUAGE.CHANGED', { lang }).toString());
+    const normalizedLang = lang.toLowerCase();
+
+    if (this.validLanguages.includes(normalizedLang)) {
+      this.translateService.use(normalizedLang);
+      this.terminal.addLine(this.translateService.instant('LANGUAGE.CHANGED', { lang: normalizedLang }).toString());
     } else {
-      this.terminal.addLine(this.translateService.instant('ERRORS.COMMAND_NOT_FOUND', { command: lang }).toString());
+      this.terminal.addLine(this.translateService.instant('LANGUAGE.INVALID').toString());
+      this.execute();
     }
   }
 }

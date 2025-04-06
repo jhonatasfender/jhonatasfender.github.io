@@ -36,37 +36,22 @@ export class TranslationService implements ITranslationService {
     this.translateService.use('en');
   }
 
-  /**
-   * Gets the current language
-   */
   public getCurrentLang(): string {
     return this.translateService.currentLang;
   }
 
-  /**
-   * Gets the default language
-   */
   public getDefaultLang(): string {
     return this.translateService.defaultLang;
   }
 
-  /**
-   * Gets all available languages
-   */
   public getAvailableLangs(): string[] {
     return this.translateService.getLangs();
   }
 
-  /**
-   * Sets the default language
-   */
   public setDefaultLang(lang: string): void {
     this.translateService.setDefaultLang(lang);
   }
 
-  /**
-   * Changes the current language
-   */
   public use(lang: string): Observable<Record<string, unknown>> {
     return this.translateService.use(lang);
   }
@@ -102,9 +87,6 @@ export class TranslationService implements ITranslationService {
     return '';
   }
 
-  /**
-   * Gets a translation value
-   */
   public get(key: string | string[], interpolateParams?: Record<string, unknown>): Observable<TranslationResult> {
     return this.translateService.get(key, interpolateParams).pipe(
       map(translations => {
@@ -118,9 +100,6 @@ export class TranslationService implements ITranslationService {
     );
   }
 
-  /**
-   * Gets a translation value instantly
-   */
   public instant(key: string | string[], interpolateParams?: Record<string, unknown>): TranslationResult {
     const translation = this.translateService.instant(key, interpolateParams) as string | string[] | Record<string, unknown>;
     if (typeof translation === 'string') {
@@ -132,9 +111,6 @@ export class TranslationService implements ITranslationService {
     return new TranslationResult('');
   }
 
-  /**
-   * Gets a stream of translations that updates when the language changes
-   */
   public stream(key: string | string[], interpolateParams?: Record<string, unknown>): Observable<TranslationResult> {
     return this.translateService.stream(key, interpolateParams).pipe(
       map(translations => {
@@ -146,30 +122,18 @@ export class TranslationService implements ITranslationService {
     );
   }
 
-  /**
-   * Gets the browser language
-   */
   public getBrowserLang(): string | undefined {
     return this.translateService.getBrowserLang();
   }
 
-  /**
-   * Gets the browser culture language
-   */
   public getBrowserCultureLang(): string | undefined {
     return this.translateService.getBrowserCultureLang();
   }
 
-  /**
-   * Reloads translations for a specific language
-   */
   public reloadLang(lang: string): Observable<Record<string, unknown>> {
     return this.translateService.reloadLang(lang);
   }
 
-  /**
-   * Resets translations for a specific language
-   */
   public resetLang(lang: string): void {
     this.translateService.resetLang(lang);
   }

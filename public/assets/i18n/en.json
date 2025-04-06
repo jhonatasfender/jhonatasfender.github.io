@@ -1,16 +1,16 @@
 {
   "WELCOME": {
-    "MESSAGE": "Welcome to my portfolio!",
-    "HELP": "This is an interactive terminal. To navigate:"
+    "MESSAGE": "Welcome to my interactive portfolio! 👋",
+    "HELP": "This is an interactive terminal where you can explore my work and experience. To navigate, use the available commands below:"
   },
   "COMMANDS": {
-    "HELP": "List all available commands",
-    "ABOUT": "Learn more about me",
-    "SKILLS": "My technical skills",
-    "PROJECTS": "Projects I've developed",
-    "CONTACT": "Contact information",
-    "CLEAR": "Clear terminal screen",
-    "LANG": "Change language"
+    "HELP": "📚 Shows all available commands and their descriptions",
+    "ABOUT": "👨‍💻 Learn more about me",
+    "SKILLS": "⚡ My technical skills",
+    "PROJECTS": "🚀 Projects I've developed",
+    "CONTACT": "📧 Contact information",
+    "CLEAR": "🧹 Clear terminal screen",
+    "LANG": "🌐 Change language"
   },
   "ABOUT": {
     "TITLE": "About me:",
@@ -37,17 +37,21 @@
     "LINKEDIN": "LinkedIn: https://www.linkedin.com/in/jhonatasfender/"
   },
   "ERRORS": {
-    "COMMAND_NOT_FOUND": "Command not found: {{command}}"
+    "COMMAND_NOT_FOUND": "❌ Oops! Command '{{command}}' not found. Type 'help' to see available commands."
   },
   "LANGUAGE": {
-    "CHANGED": "Language changed to {{lang}}",
-    "CURRENT": "Current language: {{lang}}",
-    "AVAILABLE": "Available languages:",
-    "EN": "English",
-    "PT": "Portuguese"
+    "CHANGED": "✅ Language successfully changed to {{lang}}",
+    "CURRENT": "🌐 Current language: {{lang}}",
+    "AVAILABLE": "📚 Available languages:",
+    "EN": "🇺🇸 English",
+    "PT": "🇧🇷 Portuguese",
+    "USAGE": "💡 Usage: lang [pt|en]",
+    "INVALID": "❌ Invalid language. Use 'lang' to see available languages."
   },
   "TIPS": {
-    "COMMAND": "Tip",
-    "ENTER": "Type a command and press Enter to execute"
+    "COMMAND": "💡 Tip",
+    "ENTER": "Type a command and press Enter to execute",
+    "HELP_HEADER": "📋 Available Commands:",
+    "HELP_FOOTER": "💡 Tip: You can use the Tab key to autocomplete commands"
   }
 }
