@@ -100,8 +100,6 @@ export class TranslationService implements ITranslationService {
     return this.translateService.get(key, interpolateParams).pipe(
       map(translations => {
         if (Array.isArray(key)) {
-          console.log('key', this.getTranslationValue(translations, key[0]));
-
           return new TranslationResult(key.map(k => this.getTranslationValue(translations, k)));
         }
         return new TranslationResult(this.getTranslationValue(translations, key));
