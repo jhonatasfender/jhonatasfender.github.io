@@ -13,11 +13,36 @@
     "LANG": "🌐 Muda o idioma"
   },
   "ABOUT": {
-    "TITLE": "Sobre mim:",
-    "DESCRIPTION": "Desenvolvedor Fullstack com experiência em várias tecnologias.",
-    "PASSION": "Apaixonado por tecnologia e sempre buscando aprender mais.",
-    "GITHUB": "GitHub: https://github.com/jhonatasfender",
-    "LINKEDIN": "LinkedIn: https://www.linkedin.com/in/jhonatasfender/"
+    "TITLE": "👨‍💻 Sobre mim",
+    "DESCRIPTION": "Desenvolvedor Fullstack Sênior com mais de 7 anos de experiência, apaixonado por tecnologia e inovação.",
+    "EXPERIENCE": {
+      "TITLE": "💼 Experiência Técnica:",
+      "JAVASCRIPT": "🔹 JavaScript (Sênior): React, Angular, Next.js, Node.js e NestJS",
+      "PHP": "🔹 PHP (Sênior): Laravel, CodeIgniter e Drupal",
+      "JAVA": "🔹 Java (Pleno): Spring Boot, Quarkus e JUnit",
+      "PYTHON": "🔹 Python (Júnior): Projetos pontuais",
+      "CSHARP": "🔹 C# (Júnior): .NET Core, Entity Framework e Web API"
+    },
+    "ARCHITECTURE": {
+      "TITLE": "🏗️ Arquitetura e DevOps:",
+      "DESCRIPTION": "Experiência em projetos complexos com:",
+      "MICROFRONTENDS": "🔸 Arquitetura de Micro Front-ends (MFE)",
+      "MICROSERVICES": "🔸 Microservices",
+      "DEVOPS": "🔸 DevOps: Kubernetes, Docker, Jenkins, ArgoCD, Rancher, Helm",
+      "MONITORING": "🔸 Monitoramento: InfluxDB, Prometheus e Grafana"
+    },
+    "DATABASE": {
+      "TITLE": "🗄️ Bancos de Dados:",
+      "DESCRIPTION": "SQL Server, MySQL, PostgreSQL e MongoDB"
+    },
+    "METHODOLOGY": {
+      "TITLE": "🔄 Metodologias:",
+      "DESCRIPTION": "Metodologias ágeis e práticas de DevOps"
+    },
+    "CONTINUOUS_LEARNING": {
+      "TITLE": "📚 Aprendizado Contínuo:",
+      "DESCRIPTION": "Em constante aprimoramento, estudando novas tecnologias e práticas do setor, e fortalecendo minha comunicação em inglês."
+    }
   },
   "SKILLS": {
     "TITLE": "Habilidades Técnicas:",
@@ -31,10 +56,11 @@
     "TITLE": "Projetos:"
   },
   "CONTACT": {
-    "TITLE": "Contato:",
+    "TITLE": "📞 Contato",
     "EMAIL": "Email: jhonatasfender@gmail.com",
     "GITHUB": "GitHub: https://github.com/jhonatasfender",
-    "LINKEDIN": "LinkedIn: https://www.linkedin.com/in/jhonatasfender/"
+    "LINKEDIN": "LinkedIn: https://www.linkedin.com/in/jhonatasfender/",
+    "TIP": "💡 Dica: Clique nos links para abrir em uma nova aba"
   },
   "ERRORS": {
     "COMMAND_NOT_FOUND": "❌ Ops! O comando '{{command}}' não foi encontrado. Digite 'help' para ver os comandos disponíveis."
