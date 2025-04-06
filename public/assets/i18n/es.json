@@ -76,7 +76,7 @@
     "PT": "🇧🇷 Portugués",
     "ES": "🇪🇸 Español",
     "ZH": "🇨🇳 Chino",
-    "USAGE": "💡 Uso: lang [pt|en|es|zh]",
+    "USAGE": "💡 Uso: lang [{{languages}}]",
     "INVALID": "❌ Idioma inválido. Usa 'lang' para ver los idiomas disponibles."
   },
   "TIPS": {

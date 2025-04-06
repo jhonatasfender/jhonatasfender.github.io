@@ -29,7 +29,9 @@ export class LangCommand extends BaseTerminalCommand {
     });
 
     this.terminal.addLine('');
-    this.terminal.addLine(this.translateService.instant('LANGUAGE.USAGE').toString());
+    this.terminal.addLine(this.translateService.instant('LANGUAGE.USAGE', {
+      languages: this.validLanguages.join('|')
+    }).toString());
   }
 
   public getDescription(): string {

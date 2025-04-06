@@ -76,7 +76,7 @@
     "PT": "🇧🇷 葡萄牙语",
     "ES": "🇪🇸 西班牙语",
     "ZH": "🇨🇳 中文",
-    "USAGE": "💡 用法：lang [pt|en|es|zh]",
+    "USAGE": "💡 用法：lang [{{languages}}]",
     "INVALID": "❌ 无效的语言。使用'lang'查看可用语言。"
   },
   "TIPS": {
