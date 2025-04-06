@@ -1,0 +1,10 @@
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://jhonatasfender.github.io/sitemap.xml
+
+# Disallow specific paths if needed
+# Disallow: /private/
+# Disallow: /admin/
