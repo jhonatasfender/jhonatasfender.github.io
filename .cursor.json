@@ -1,0 +1,43 @@
+{
+  "project": {
+    "name": "jhonatasfender.github.io",
+    "type": "website",
+    "framework": "angular",
+    "version": "17.3.0",
+    "structure": {
+      "root": ".",
+      "directories": [
+        "src",
+        "src/app",
+        "src/assets",
+        ".vscode",
+        "public"
+      ],
+      "files": {
+        "configuration": [
+          "angular.json",
+          "package.json",
+          "tsconfig.json",
+          ".editorconfig",
+          ".gitignore"
+        ],
+        "source": [
+          "src/main.ts",
+          "src/index.html",
+          "src/styles.scss",
+          "src/app/app.component.ts",
+          "src/app/app.component.html",
+          "src/app/app.component.scss",
+          "src/app/app.config.ts",
+          "src/app/app.routes.ts"
+        ]
+      }
+    },
+    "last_updated": "2024-04-06",
+    "dependencies": {
+      "@angular/core": "^17.3.0",
+      "@angular/cli": "^17.3.0",
+      "typescript": "^5.3.3"
+    }
+  }
+}
