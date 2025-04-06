@@ -1,0 +1,86 @@
+@font-face {
+  font-family: 'Fira Code';
+  src: url('../../assets/fonts/FiraCode-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Fira Code';
+  src: url('../../assets/fonts/FiraCode-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+.terminal {
+    width: 800px;
+    height: 600px;
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(76, 175, 80, 0.3),
+                0 0 60px rgba(0, 0, 0, 0.6);
+    font-family: 'Fira Code', monospace;
+    color: #fff;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(76, 175, 80, 0.2);
+    overflow: hidden;
+}
+
+.terminal-header {
+    background-color: #2d2d2d;
+    padding: 12px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(76, 175, 80, 0.2);
+}
+
+.terminal-title {
+    font-size: 14px;
+    color: #fff;
+    font-family: 'Fira Code', monospace;
+}
+
+.terminal-body {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.output {
+    flex: 1;
+    margin-bottom: 10px;
+    font-family: 'Fira Code', monospace;
+}
+
+.line {
+    margin-bottom: 5px;
+    white-space: pre-wrap;
+    font-family: 'Fira Code', monospace;
+}
+
+.input-line {
+    display: flex;
+    align-items: center;
+}
+
+.prompt {
+    color: #4CAF50;
+    margin-right: 10px;
+    font-family: 'Fira Code', monospace;
+}
+
+.command-input {
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-family: 'Fira Code', monospace;
+    font-size: 16px;
+    flex: 1;
+    outline: none;
+}

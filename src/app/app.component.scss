@@ -1,0 +1,85 @@
+:host {
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  padding: 20px;
+  gap: 40px;
+  font-family: 'Fira Code', monospace;
+}
+
+.help-panel {
+  background: rgba(30, 30, 30, 0.9);
+  padding: 30px;
+  border-radius: 8px;
+  max-width: 300px;
+  box-shadow: 0 0 20px rgba(76, 175, 80, 0.2);
+  border: 1px solid rgba(76, 175, 80, 0.1);
+}
+
+.help-content {
+  h2 {
+    color: #4CAF50;
+    margin: 0 0 20px 0;
+    font-size: 1.5em;
+    font-family: 'Fira Code', monospace;
+  }
+
+  p {
+    color: #fff;
+    margin-bottom: 20px;
+    font-family: 'Fira Code', monospace;
+  }
+}
+
+.command-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.command-item {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  code {
+    color: #4CAF50;
+    background: rgba(76, 175, 80, 0.1);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: 'Fira Code', monospace;
+  }
+
+  span {
+    color: #ccc;
+    font-size: 0.9em;
+    font-family: 'Fira Code', monospace;
+  }
+}
+
+.tip {
+  margin-top: 30px;
+  padding: 15px;
+  background: rgba(76, 175, 80, 0.1);
+  border-radius: 6px;
+  color: #fff;
+  font-size: 0.9em;
+  font-family: 'Fira Code', monospace;
+
+  span {
+    color: #4CAF50;
+    font-weight: bold;
+  }
+}
+
+@media (max-width: 1200px) {
+  :host {
+    flex-direction: column;
+  }
+
+  .help-panel {
+    max-width: none;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}

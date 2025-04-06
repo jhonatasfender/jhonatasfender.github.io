@@ -1,0 +1,19 @@
+<div class="terminal" (click)="focusInput()">
+  <div class="terminal-header">
+    <div class="terminal-title">jhonatasfender&#64;portfolio:~$</div>
+  </div>
+  <div class="terminal-body">
+    <div class="output" #output></div>
+    <div class="input-line">
+      <span class="prompt">jhonatasfender&#64;portfolio:~$</span>
+      <input
+        #commandInput
+        type="text"
+        (keyup)="handleCommand($event)"
+        class="command-input"
+        autocomplete="off"
+        spellcheck="false"
+      >
+    </div>
+  </div>
+</div>
