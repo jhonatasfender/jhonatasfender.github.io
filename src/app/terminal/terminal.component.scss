@@ -12,6 +12,10 @@
   font-style: normal;
 }
 
+:host {
+  display: block;
+}
+
 .terminal {
     width: 800px;
     height: 600px;
@@ -48,7 +52,38 @@
     border-top-right-radius: 8px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     border-bottom: 1px solid rgba(76, 175, 80, 0.2);
+}
+
+.window-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.control-button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+        transform: scale(1.1);
+    }
+
+    &.minimize {
+        background-color: #f1c40f;
+    }
+
+    &.maximize {
+        background-color: #2ecc71;
+    }
+
+    &.close {
+        background-color: #e74c3c;
+    }
 }
 
 .terminal-title {
@@ -65,10 +100,24 @@
     flex-direction: column;
 }
 
-.output {
+:host ::ng-deep .output {
     flex: 1;
     margin-bottom: 10px;
     font-family: 'Fira Code', monospace;
+
+    .command-line {
+      margin-bottom: 5px;
+      margin-top: 10px;
+        white-space: pre-wrap;
+        font-family: 'Fira Code', monospace;
+
+        .prompt {
+            color: #4CAF50;
+            margin-right: 10px;
+            font-family: 'Fira Code', monospace;
+            display: inline-block;
+        }
+    }
 }
 
 .line {
@@ -96,12 +145,13 @@
             border-radius: 4px;
         }
     }
-}
 
-.prompt {
-    color: #4CAF50;
-    margin-right: 10px;
-    font-family: 'Fira Code', monospace;
+    .prompt {
+        color: #4CAF50;
+        margin-right: 10px;
+        font-family: 'Fira Code', monospace;
+        display: inline-block;
+    }
 }
 
 .command-input {

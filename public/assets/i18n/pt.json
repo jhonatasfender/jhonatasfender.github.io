@@ -3,6 +3,9 @@
     "MESSAGE": "Bem-vindo ao meu portfólio interativo! 👋",
     "HELP": "Este é um terminal interativo onde você pode explorar meu trabalho e experiência. Para navegar, use os comandos disponíveis abaixo:"
   },
+  "TERMINAL": {
+    "TITLE": "Terminal Interativo - Portfólio"
+  },
   "COMMANDS": {
     "HELP": "📚 Mostra todos os comandos disponíveis e suas descrições",
     "ABOUT": "👨‍💻 Conheça mais sobre mim",

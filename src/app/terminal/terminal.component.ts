@@ -13,13 +13,14 @@ import { LangCommand } from './commands/lang.command';
 import { HelpCommand } from './commands/help.command';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-terminal',
   templateUrl: './terminal.component.html',
   styleUrls: ['./terminal.component.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule]
+  imports: [CommonModule, FormsModule, TranslateModule]
 })
 export class TerminalComponent implements OnInit, AfterViewInit {
   @ViewChild('commandInput') private commandInput!: ElementRef<HTMLInputElement>;
@@ -99,8 +100,7 @@ export class TerminalComponent implements OnInit, AfterViewInit {
   }
 
   private isClickInsideTerminal(event: MouseEvent): boolean {
-    const terminalElement = this.commandInput.nativeElement.closest('.terminal');
-    return terminalElement?.contains(event.target as Node) ?? false;
+    return this.terminal.nativeElement.contains(event.target as Node);
   }
 
   public focusInput(): void {
@@ -126,7 +126,7 @@ export class TerminalComponent implements OnInit, AfterViewInit {
 
   public executeCommand(command: string): void {
     const outputElement = this.output.nativeElement;
-    outputElement.innerHTML += `<div class="command-line">$ ${command}</div>`;
+    outputElement.innerHTML += `<div class="command-line"><span class="prompt">jhonatasfender&#64;portfolio:~$</span> ${command}</div>`;
     outputElement.scrollTop = outputElement.scrollHeight;
 
     const [commandName, ...args] = command.split(' ');

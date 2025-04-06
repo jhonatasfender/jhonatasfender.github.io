@@ -3,6 +3,9 @@
     "MESSAGE": "Welcome to my interactive portfolio! 👋",
     "HELP": "This is an interactive terminal where you can explore my work and experience. To navigate, use the available commands below:"
   },
+  "TERMINAL": {
+    "TITLE": "Interactive Terminal - Portfolio"
+  },
   "COMMANDS": {
     "HELP": "📚 Shows all available commands and their descriptions",
     "ABOUT": "👨‍💻 Learn more about me",

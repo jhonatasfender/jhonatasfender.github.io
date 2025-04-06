@@ -1,6 +1,11 @@
 <div class="terminal" #terminal [class.fullscreen]="isMobile" (click)="focusInput()">
   <div class="terminal-header">
-    <div class="terminal-title">jhonatasfender&#64;portfolio:~$</div>
+    <div class="terminal-title">{{ 'TERMINAL.TITLE' | translate }}</div>
+    <div class="window-controls">
+      <button class="control-button minimize"></button>
+      <button class="control-button maximize"></button>
+      <button class="control-button close"></button>
+    </div>
   </div>
   <div class="terminal-body">
     <div class="output" #output></div>
