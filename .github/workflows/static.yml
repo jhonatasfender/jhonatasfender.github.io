@@ -32,10 +32,13 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run build -- --configuration=production
+        run: npm run build -- --configuration=production --base-href="/jhonatasfender.github.io/"
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
+        with:
+          enablement: true
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
