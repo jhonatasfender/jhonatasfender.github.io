@@ -74,7 +74,9 @@
     "AVAILABLE": "📚 Idiomas disponíveis:",
     "EN": "🇺🇸 Inglês",
     "PT": "🇧🇷 Português",
-    "USAGE": "💡 Uso: lang [pt|en]",
+    "ES": "��🇸 Espanhol",
+    "ZH": "🇨🇳 Chinês",
+    "USAGE": "💡 Uso: lang [pt|en|es|zh]",
     "INVALID": "❌ Idioma inválido. Use 'lang' para ver os idiomas disponíveis."
   },
   "TIPS": {

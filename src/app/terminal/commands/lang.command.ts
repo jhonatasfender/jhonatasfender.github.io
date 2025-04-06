@@ -4,7 +4,7 @@ import { TerminalComponent } from '../terminal.component';
 import { Inject } from '@angular/core';
 
 export class LangCommand extends BaseTerminalCommand {
-  private readonly validLanguages = ['en', 'pt'];
+  private readonly validLanguages = ['en', 'pt', 'es', 'zh'];
 
   constructor(
     terminal: TerminalComponent,

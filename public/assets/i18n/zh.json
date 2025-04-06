@@ -1,0 +1,88 @@
+{
+  "WELCOME": {
+    "MESSAGE": "欢迎来到我的互动作品集！ 👋",
+    "HELP": "这是一个互动终端，您可以探索我的工作和经验。使用以下可用命令进行导航："
+  },
+  "TERMINAL": {
+    "TITLE": "互动终端 - 作品集"
+  },
+  "COMMANDS": {
+    "HELP": "📚 显示所有可用命令及其描述",
+    "ABOUT": "👨‍💻 了解更多关于我的信息",
+    "SKILLS": "⚡ 我的技术技能",
+    "PROJECTS": "🚀 我开发的项目",
+    "CONTACT": "📧 联系信息",
+    "CLEAR": "🧹 清除终端屏幕",
+    "LANG": "🌐 更改语言"
+  },
+  "ABOUT": {
+    "TITLE": "👨‍💻 关于我",
+    "DESCRIPTION": "拥有7年以上经验的高级全栈开发人员，热衷于技术和创新。",
+    "EXPERIENCE": {
+      "TITLE": "💼 技术经验：",
+      "JAVASCRIPT": "🔹 JavaScript（高级）：React、Angular、Next.js、Node.js和NestJS",
+      "PHP": "🔹 PHP（高级）：Laravel、CodeIgniter和Drupal",
+      "JAVA": "🔹 Java（中级）：Spring Boot、Quarkus和JUnit",
+      "PYTHON": "🔹 Python（初级）：特定项目",
+      "CSHARP": "🔹 C#（初级）：.NET Core、Entity Framework和Web API"
+    },
+    "ARCHITECTURE": {
+      "TITLE": "🏗️ 架构和DevOps：",
+      "DESCRIPTION": "在复杂项目中的经验：",
+      "MICROFRONTENDS": "🔸 微前端（MFE）架构",
+      "MICROSERVICES": "🔸 微服务",
+      "DEVOPS": "🔸 DevOps：Kubernetes、Docker、Jenkins、ArgoCD、Rancher、Helm",
+      "MONITORING": "🔸 监控：InfluxDB、Prometheus和Grafana"
+    },
+    "DATABASE": {
+      "TITLE": "🗄️ 数据库：",
+      "DESCRIPTION": "SQL Server、MySQL、PostgreSQL和MongoDB"
+    },
+    "METHODOLOGY": {
+      "TITLE": "🔄 方法论：",
+      "DESCRIPTION": "敏捷方法论和DevOps实践"
+    },
+    "CONTINUOUS_LEARNING": {
+      "TITLE": "📚 持续学习：",
+      "DESCRIPTION": "不断改进，学习新技术和行业实践，并加强我的英语沟通能力。"
+    }
+  },
+  "SKILLS": {
+    "TITLE": "技术技能：",
+    "FRONTEND": "前端开发：Angular、React、Vue.js",
+    "BACKEND": "后端开发：Node.js、Python、Java",
+    "DATABASE": "数据库：MySQL、PostgreSQL、MongoDB",
+    "DEVOPS": "DevOps：Docker、CI/CD、AWS",
+    "OTHERS": "其他：Git、Linux、Scrum"
+  },
+  "PROJECTS": {
+    "TITLE": "项目："
+  },
+  "CONTACT": {
+    "TITLE": "📞 联系方式",
+    "EMAIL": "邮箱：jhonatasfender@gmail.com",
+    "GITHUB": "GitHub：https://github.com/jhonatasfender",
+    "LINKEDIN": "LinkedIn：https://www.linkedin.com/in/jhonatasfender/",
+    "TIP": "💡 提示：点击链接在新标签页中打开"
+  },
+  "ERRORS": {
+    "COMMAND_NOT_FOUND": "❌ 抱歉！未找到命令'{{command}}'。输入'help'查看可用命令。"
+  },
+  "LANGUAGE": {
+    "CHANGED": "✅ 语言已成功更改为{{lang}}",
+    "CURRENT": "🌐 当前语言：{{lang}}",
+    "AVAILABLE": "📚 可用语言：",
+    "EN": "🇺🇸 英语",
+    "PT": "🇧🇷 葡萄牙语",
+    "ES": "🇪🇸 西班牙语",
+    "ZH": "🇨🇳 中文",
+    "USAGE": "💡 用法：lang [pt|en|es|zh]",
+    "INVALID": "❌ 无效的语言。使用'lang'查看可用语言。"
+  },
+  "TIPS": {
+    "COMMAND": "💡 提示",
+    "ENTER": "输入命令并按Enter执行",
+    "HELP_HEADER": "📋 可用命令：",
+    "HELP_FOOTER": "💡 提示：您可以使用Tab键自动完成命令"
+  }
+}
