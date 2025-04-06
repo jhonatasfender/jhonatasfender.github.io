@@ -1,59 +1,108 @@
-# Jhonatasfender
+# 👨‍💻 Jhonatasfender - Full Stack Developer Portfolio 🚀
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.6.
+This is the repository for my personal portfolio, developed with Angular and TypeScript. The project features an interactive terminal interface that allows visitors to explore my skills, projects, and contact information in a unique and engaging way.
 
-## Development server
+## 🛠️ Technologies Used
 
-To start a local development server, run:
+- Angular 19
+- TypeScript
+- SCSS
+- Ngx-translate (Internationalization)
+- Fira Code (Font)
 
+## 🚀 Features
+
+- Interactive terminal interface
+- Multi-language support (Portuguese and English)
+- Responsive design
+- Interactive commands:
+  - `help` - Lists all available commands
+  - `about` - Displays information about me
+  - `skills` - Shows my technical skills
+  - `projects` - Lists my projects
+  - `contact` - Displays contact information
+  - `clear` - Clears the terminal
+  - `lang` - Changes the interface language
+
+## 📁 Project Structure
+
+```
+src/
+├── app/
+│   ├── components/
+│   │   └── loading/          # Loading component
+│   │   ├── core/
+│   │   │   ├── interfaces/       # System interfaces
+│   │   │   └── services/         # Main services
+│   │   ├── help-panel/          # Help panel
+│   │   ├── terminal/            # Main terminal component
+│   │   │   ├── commands/        # Command implementations
+│   │   │   ├── interfaces/      # Terminal interfaces
+│   │   │   └── services/        # Terminal services
+│   │   ├── app.component.*      # Root component
+│   │   ├── app.config.ts        # Application configuration
+│   │   └── app.routes.ts        # Application routes
+│   ├── assets/
+│   │   ├── fonts/              # Custom fonts
+│   │   └── i18n/               # Translation files
+│   └── styles.scss             # Global styles
+```
+
+## 🚀 How to Run
+
+### Prerequisites
+
+- Node.js (version 16 or higher)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/jhonatasfender/jhonatasfender.github.io.git
+cd jhonatasfender.github.io
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Start the development server:
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+4. Access `http://localhost:4200` in your browser
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
+### Production Build
 
 ```bash
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+The build files will be generated in the `dist/jhonatasfender` folder.
 
-## Running unit tests
+## 📝 Available Commands
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+- `help` - Shows all available commands
+- `about` - Displays information about me
+- `skills` - Lists my technical skills
+- `projects` - Shows my projects
+- `contact` - Displays contact information
+- `clear` - Clears the terminal
+- `lang [pt|en]` - Changes the interface language
 
-```bash
-ng test
-```
+## 🤝 Contributing
 
-## Running end-to-end tests
+Contributions are welcome! Feel free to open issues or submit pull requests.
 
-For end-to-end (e2e) testing, run:
+## 📄 License
 
-```bash
-ng e2e
-```
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## 📞 Contact
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- GitHub: [jhonatasfender](https://github.com/jhonatasfender)
+- LinkedIn: [Jhonatas Fender](https://linkedin.com/in/jhonatasfender)
+- Email: [your-email@example.com](mailto:your-email@example.com)
