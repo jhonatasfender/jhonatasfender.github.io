@@ -13,22 +13,23 @@ import { LangCommand } from './commands/lang.command';
 import { HelpCommand } from './commands/help.command';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { LoadingComponent } from '../components/loading/loading.component';
 
 @Component({
   selector: 'app-terminal',
   templateUrl: './terminal.component.html',
   styleUrls: ['./terminal.component.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, LoadingComponent]
+  imports: [CommonModule, FormsModule]
 })
 export class TerminalComponent implements OnInit, AfterViewInit {
   @ViewChild('commandInput') private commandInput!: ElementRef<HTMLInputElement>;
   @ViewChild('output') private output!: ElementRef<HTMLDivElement>;
+  @ViewChild('terminal') private terminal!: ElementRef<HTMLDivElement>;
 
   private outputLines: string[] = [];
   private commands: Map<string, ITerminalCommand>;
   private pendingMessages: string[] = [];
+  public isMobile: boolean = window.innerWidth <= 1024;
 
   constructor(
     @Inject(TERMINAL_ERROR) private terminalErrorService: ITerminalError,
@@ -36,6 +37,10 @@ export class TerminalComponent implements OnInit, AfterViewInit {
     private commandHistory: CommandHistoryService,
     @Inject(TRANSLATION_SERVICE) private translationService: ITranslationService
   ) {
+    window.addEventListener('resize', () => {
+      this.isMobile = window.innerWidth <= 1024;
+    });
+
     const aboutCommand = new AboutCommand(this, translationService);
     const skillsCommand = new SkillsCommand(this, translationService);
     const projectsCommand = new ProjectsCommand(this, translationService);

@@ -5,9 +5,57 @@
   max-width: 300px;
   box-shadow: 0 0 20px rgba(76, 175, 80, 0.2);
   border: 1px solid rgba(76, 175, 80, 0.1);
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+
+  &.mobile {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    border-radius: 0;
+    transform: translateX(-100%);
+    z-index: 1000;
+    overflow-y: auto;
+
+    &.open {
+      transform: translateX(0);
+    }
+  }
 }
 
 .help-content {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .close-button {
+    margin-top: auto;
+    padding: 12px 24px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-family: 'Fira Code', monospace;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-self: center;
+    margin-top: 30px;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+
+    &:hover, &:focus {
+      background: #45a049;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      outline: none;
+    }
+  }
+
   h2 {
     color: #4CAF50;
     margin: 0 0 20px 0;
@@ -63,10 +111,87 @@
   }
 }
 
-@media (max-width: 1200px) {
+.help-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #4CAF50;
+  color: white;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(76, 175, 80, 0.3);
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  opacity: 0.8;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+
+  &:hover, &:focus {
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(76, 175, 80, 0.4);
+    opacity: 1;
+    outline: none;
+  }
+
+  span {
+    font-family: 'Fira Code', monospace;
+  }
+}
+
+@media (min-width: 1025px) {
   .help-panel {
-    max-width: none;
+    max-width: 300px;
+    width: auto;
+  }
+}
+
+@media (max-width: 1024px) {
+  .help-panel {
     width: 100%;
-    box-sizing: border-box;
+    padding: 20px;
+  }
+
+  .help-content {
+    h2 {
+      font-size: 1.2em;
+    }
+
+    p {
+      font-size: 0.9em;
+    }
+  }
+
+  .command-item {
+    code {
+      font-size: 0.9em;
+    }
+
+    span {
+      font-size: 0.8em;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .help-panel {
+    padding: 15px;
+  }
+
+  .help-content {
+    h2 {
+      font-size: 1.1em;
+    }
+  }
+
+  .tip {
+    padding: 10px;
+    font-size: 0.8em;
   }
 }

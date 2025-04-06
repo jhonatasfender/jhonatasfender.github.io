@@ -1,4 +1,8 @@
-<div class="help-panel">
+<button class="help-button" *ngIf="isMobile" (click)="togglePanel()">
+  <span>?</span>
+</button>
+
+<div class="help-panel" [class.mobile]="isMobile" [class.open]="isPanelOpen">
   <div class="help-content">
     <h2>{{ getTranslation('WELCOME.MESSAGE') }}</h2>
     <p>{{ getTranslation('WELCOME.HELP') }}</p>
@@ -31,5 +35,8 @@
     <div class="tip">
       <span>💡 {{ getTranslation('TIPS.COMMAND') }}:</span> {{ getTranslation('TIPS.ENTER') }}
     </div>
+    <button class="close-button" *ngIf="isMobile" (click)="closePanel()">
+      Fechar Ajuda
+    </button>
   </div>
 </div>

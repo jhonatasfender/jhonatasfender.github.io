@@ -26,6 +26,19 @@
     flex-direction: column;
     border: 1px solid rgba(76, 175, 80, 0.2);
     overflow: hidden;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+
+    &.fullscreen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        border-radius: 0;
+        z-index: 100;
+    }
 }
 
 .terminal-header {
@@ -67,6 +80,22 @@
 .input-line {
     display: flex;
     align-items: center;
+
+    &.mobile {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+
+        .prompt {
+            margin-bottom: 4px;
+        }
+
+        .command-input {
+            width: 100%;
+            padding: 8px;
+            border-radius: 4px;
+        }
+    }
 }
 
 .prompt {
@@ -83,4 +112,55 @@
     font-size: 16px;
     flex: 1;
     outline: none;
+}
+
+@media (max-width: 1200px) {
+  .terminal {
+    width: 90%;
+    height: 500px;
+    margin: 10px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .terminal {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    border-radius: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+  }
+
+  .terminal-body {
+    padding: 10px;
+  }
+
+  .terminal-title {
+    font-size: 12px;
+  }
+
+  .command-input {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .terminal {
+    height: 100%;
+  }
+
+  .terminal-header {
+    padding: 8px;
+  }
+
+  .prompt {
+    font-size: 12px;
+  }
+
+  .terminal-body {
+    padding: 8px;
+  }
 }

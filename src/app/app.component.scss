@@ -2,13 +2,24 @@
   display: flex;
   min-height: 100vh;
   align-items: center;
+  justify-content: center;
   padding: 20px;
   gap: 40px;
   font-family: 'Fira Code', monospace;
+  box-sizing: border-box;
 }
 
 @media (max-width: 1200px) {
   :host {
     flex-direction: column;
+    padding: 10px;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 1024px) {
+  :host {
+    padding: 5px;
+    gap: 10px;
   }
 }
