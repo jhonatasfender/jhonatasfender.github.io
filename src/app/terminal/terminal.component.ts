@@ -13,13 +13,14 @@ import { LangCommand } from './commands/lang.command';
 import { HelpCommand } from './commands/help.command';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { LoadingComponent } from '../components/loading/loading.component';
 
 @Component({
   selector: 'app-terminal',
   templateUrl: './terminal.component.html',
   styleUrls: ['./terminal.component.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule]
+  imports: [CommonModule, FormsModule, LoadingComponent]
 })
 export class TerminalComponent implements OnInit, AfterViewInit {
   @ViewChild('commandInput') private commandInput!: ElementRef<HTMLInputElement>;

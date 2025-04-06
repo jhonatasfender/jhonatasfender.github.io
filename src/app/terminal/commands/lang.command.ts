@@ -40,8 +40,20 @@ export class LangCommand extends BaseTerminalCommand {
     const normalizedLang = lang.toLowerCase();
 
     if (this.validLanguages.includes(normalizedLang)) {
-      this.translateService.use(normalizedLang);
-      this.terminal.addLine(this.translateService.instant('LANGUAGE.CHANGED', { lang: normalizedLang }).toString());
+      const loadingElement = document.createElement('div');
+      loadingElement.innerHTML = `
+        <app-loading message="Loading translation..." size="small"></app-loading>
+      `;
+      this.terminal.addLine(loadingElement.outerHTML);
+
+      this.translateService.use(normalizedLang).subscribe({
+        next: () => {
+          this.terminal.addLine(this.translateService.instant('LANGUAGE.CHANGED', { lang: normalizedLang }).toString());
+        },
+        error: () => {
+          this.terminal.addLine(this.translateService.instant('LANGUAGE.ERROR').toString());
+        }
+      });
     } else {
       this.terminal.addLine(this.translateService.instant('LANGUAGE.INVALID').toString());
       this.execute();

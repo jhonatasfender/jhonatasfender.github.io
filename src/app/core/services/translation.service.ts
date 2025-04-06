@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 import { ITranslationService } from '../interfaces/translation.interface';
 import { map } from 'rxjs/operators';
 
@@ -31,6 +31,9 @@ class TranslationResult {
   providedIn: 'root'
 })
 export class TranslationService implements ITranslationService {
+  private loadingSubject = new BehaviorSubject<boolean>(false);
+  public loading$ = this.loadingSubject.asObservable();
+
   constructor(private translateService: TranslateService) {
     this.translateService.setDefaultLang('en');
     this.translateService.use('en');
@@ -53,7 +56,13 @@ export class TranslationService implements ITranslationService {
   }
 
   public use(lang: string): Observable<Record<string, unknown>> {
-    return this.translateService.use(lang);
+    this.loadingSubject.next(true);
+    return this.translateService.use(lang).pipe(
+      map(result => {
+        this.loadingSubject.next(false);
+        return result;
+      })
+    );
   }
 
   private getTranslationValue(obj: unknown, key: string): string {
@@ -131,7 +140,13 @@ export class TranslationService implements ITranslationService {
   }
 
   public reloadLang(lang: string): Observable<Record<string, unknown>> {
-    return this.translateService.reloadLang(lang);
+    this.loadingSubject.next(true);
+    return this.translateService.reloadLang(lang).pipe(
+      map(result => {
+        this.loadingSubject.next(false);
+        return result;
+      })
+    );
   }
 
   public resetLang(lang: string): void {
