@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+dist/
+build/
+
+# IDE
+.idea/
+.vscode/
+
+# Testing
+coverage/
+*.spec.ts
+*.e2e-spec.ts
+
+# Environment
+.env
+.env.*
+
+# Misc
+*.log
+*.min.js
+*.min.css

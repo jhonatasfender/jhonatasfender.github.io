@@ -1,64 +1,92 @@
-import { Component, OnInit, ElementRef, ViewChild, AfterViewInit, HostListener } from '@angular/core';
-import { ITerminalCommand } from './interfaces/terminal-command.interface';
-import { TerminalErrorService } from './services/terminal-error.service';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, HostListener, Inject } from '@angular/core';
 import { TerminalMessageService } from './services/terminal-message.service';
-import {
-  HelpCommand,
-  AboutCommand,
-  SkillsCommand,
-  ProjectsCommand,
-  ContactCommand,
-  ClearCommand
-} from './commands';
 import { CommandHistoryService } from './command-history.service';
+import { ITranslationService, TRANSLATION_SERVICE } from '../core/interfaces/translation.interface';
+import { ITerminalCommand } from './interfaces/terminal-command.interface';
+import { ITerminalError, TERMINAL_ERROR } from './interfaces/terminal-error.interface';
+import { AboutCommand } from './commands/about.command';
+import { SkillsCommand } from './commands/skills.command';
+import { ProjectsCommand } from './commands/projects.command';
+import { ContactCommand } from './commands/contact.command';
+import { ClearCommand } from './commands/clear.command';
+import { LangCommand } from './commands/lang.command';
+import { HelpCommand } from './commands/help.command';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-terminal',
   templateUrl: './terminal.component.html',
   styleUrls: ['./terminal.component.scss'],
-  standalone: true
+  standalone: true,
+  imports: [CommonModule, FormsModule]
 })
 export class TerminalComponent implements OnInit, AfterViewInit {
-  @ViewChild('commandInput') commandInput!: ElementRef;
-  @ViewChild('output') output!: ElementRef;
+  @ViewChild('commandInput') private commandInput!: ElementRef<HTMLInputElement>;
+  @ViewChild('output') private output!: ElementRef<HTMLDivElement>;
 
   private outputLines: string[] = [];
   private commands: Map<string, ITerminalCommand>;
+  private pendingMessages: string[] = [];
 
   constructor(
-    private terminalErrorService: TerminalErrorService,
+    @Inject(TERMINAL_ERROR) private terminalErrorService: ITerminalError,
     private terminalMessageService: TerminalMessageService,
-    private commandHistory: CommandHistoryService
+    private commandHistory: CommandHistoryService,
+    @Inject(TRANSLATION_SERVICE) private translationService: ITranslationService
   ) {
-    const aboutCommand = new AboutCommand(this);
-    const skillsCommand = new SkillsCommand(this);
-    const projectsCommand = new ProjectsCommand(this);
-    const contactCommand = new ContactCommand(this);
-    const clearCommand = new ClearCommand(this);
+    const aboutCommand = new AboutCommand(this, translationService);
+    const skillsCommand = new SkillsCommand(this, translationService);
+    const projectsCommand = new ProjectsCommand(this, translationService);
+    const contactCommand = new ContactCommand(this, translationService);
+    const clearCommand = new ClearCommand(this, translationService);
+    const langCommand = new LangCommand(this, translationService);
 
     this.commands = new Map<string, ITerminalCommand>([
       ['about', aboutCommand],
       ['skills', skillsCommand],
       ['projects', projectsCommand],
       ['contact', contactCommand],
-      ['clear', clearCommand]
+      ['clear', clearCommand],
+      ['lang', langCommand]
     ]);
 
-    this.commands.set('help', new HelpCommand(this, this.commands));
+    this.commands.set('help', new HelpCommand(this, this.commands, translationService));
   }
 
   public ngOnInit(): void {
-    this.outputLines = this.terminalMessageService.getWelcomeMessages();
+    this.terminalMessageService.getWelcomeMessages().subscribe({
+      next: (messages) => {
+        this.pendingMessages = messages;
+        if (this.output) {
+          this.displayPendingMessages();
+        }
+      },
+      error: (error) => {
+        console.error('Error getting welcome messages:', error);
+      }
+    });
   }
 
-  public ngAfterViewInit() {
-    this.outputLines.forEach(line => this.addLine(line));
+  public ngAfterViewInit(): void {
+    if (this.pendingMessages.length > 0) {
+      this.displayPendingMessages();
+    }
     this.focusInput();
     this.terminalErrorService.setOutputElement(this.output.nativeElement);
   }
 
+  private displayPendingMessages(): void {
+    this.pendingMessages.forEach(message => {
+      if (message) {
+        this.addLine(message);
+      }
+    });
+    this.pendingMessages = [];
+  }
+
   @HostListener('document:click', ['$event'])
-  public onDocumentClick(event: MouseEvent) {
+  public onDocumentClick(event: MouseEvent): void {
     if (!this.isClickInsideTerminal(event)) {
       this.focusInput();
     }
@@ -66,7 +94,7 @@ export class TerminalComponent implements OnInit, AfterViewInit {
 
   private isClickInsideTerminal(event: MouseEvent): boolean {
     const terminalElement = this.commandInput.nativeElement.closest('.terminal');
-    return terminalElement && terminalElement.contains(event.target as Node);
+    return terminalElement?.contains(event.target as Node) ?? false;
   }
 
   public focusInput(): void {
@@ -90,34 +118,36 @@ export class TerminalComponent implements OnInit, AfterViewInit {
     }
   }
 
-  private executeCommand(command: string): void {
+  public executeCommand(command: string): void {
     const outputElement = this.output.nativeElement;
     outputElement.innerHTML += `<div class="command-line">$ ${command}</div>`;
     outputElement.scrollTop = outputElement.scrollHeight;
 
-    const commandInstance = this.commands.get(command);
+    const [commandName, ...args] = command.split(' ');
+    const commandInstance = this.commands.get(commandName);
+
     if (commandInstance) {
-      commandInstance.execute();
+      if (commandName === 'lang' && args.length > 0) {
+        (commandInstance as LangCommand).changeLanguage(args[0]);
+      } else {
+        commandInstance.execute();
+      }
     } else {
-      this.terminalErrorService.printError(`Comando não encontrado: ${command}`);
+      const errorTranslation = this.translationService.instant('ERRORS.COMMAND_NOT_FOUND', { command });
+      const errorMessage = errorTranslation.toString();
+      this.terminalErrorService.printError(errorMessage);
     }
 
     this.focusInput();
   }
 
-  public addLine(text: string) {
-    if (this.output?.nativeElement) {
-      const line = document.createElement('div');
-      line.className = 'line';
-      line.textContent = text;
-      this.output.nativeElement.appendChild(line);
-      this.output.nativeElement.scrollTop = this.output.nativeElement.scrollHeight;
-    }
+  public addLine(line: string): void {
+    const outputElement = this.output.nativeElement;
+    outputElement.innerHTML += `<div class="line">${line}</div>`;
+    outputElement.scrollTop = outputElement.scrollHeight;
   }
 
-  public clear() {
-    if (this.output?.nativeElement) {
-      this.output.nativeElement.innerHTML = '';
-    }
+  public clear(): void {
+    this.output.nativeElement.innerHTML = '';
   }
 }

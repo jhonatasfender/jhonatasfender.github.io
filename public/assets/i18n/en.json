@@ -1,0 +1,53 @@
+{
+  "WELCOME": {
+    "MESSAGE": "Welcome to my portfolio!",
+    "HELP": "This is an interactive terminal. To navigate:"
+  },
+  "COMMANDS": {
+    "HELP": "List all available commands",
+    "ABOUT": "Learn more about me",
+    "SKILLS": "My technical skills",
+    "PROJECTS": "Projects I've developed",
+    "CONTACT": "Contact information",
+    "CLEAR": "Clear terminal screen",
+    "LANG": "Change language"
+  },
+  "ABOUT": {
+    "TITLE": "About me:",
+    "DESCRIPTION": "Fullstack Developer with experience in various technologies.",
+    "PASSION": "Passionate about technology and always seeking to learn more.",
+    "GITHUB": "GitHub: https://github.com/jhonatasfender",
+    "LINKEDIN": "LinkedIn: https://www.linkedin.com/in/jhonatasfender/"
+  },
+  "SKILLS": {
+    "TITLE": "Technical Skills:",
+    "FRONTEND": "Frontend Development: Angular, React, Vue.js",
+    "BACKEND": "Backend Development: Node.js, Python, Java",
+    "DATABASE": "Database: MySQL, PostgreSQL, MongoDB",
+    "DEVOPS": "DevOps: Docker, CI/CD, AWS",
+    "OTHERS": "Others: Git, Linux, Scrum"
+  },
+  "PROJECTS": {
+    "TITLE": "Projects:"
+  },
+  "CONTACT": {
+    "TITLE": "Contact:",
+    "EMAIL": "Email: jhonatasfender@gmail.com",
+    "GITHUB": "GitHub: https://github.com/jhonatasfender",
+    "LINKEDIN": "LinkedIn: https://www.linkedin.com/in/jhonatasfender/"
+  },
+  "ERRORS": {
+    "COMMAND_NOT_FOUND": "Command not found: {{command}}"
+  },
+  "LANGUAGE": {
+    "CHANGED": "Language changed to {{lang}}",
+    "CURRENT": "Current language: {{lang}}",
+    "AVAILABLE": "Available languages:",
+    "EN": "English",
+    "PT": "Portuguese"
+  },
+  "TIPS": {
+    "COMMAND": "Tip",
+    "ENTER": "Type a command and press Enter to execute"
+  }
+}
