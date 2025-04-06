@@ -34,6 +34,12 @@ jobs:
       - name: Build
         run: npm run build -- --configuration=production
 
+      - name: Move files to root
+        run: |
+          cd dist/jhonatasfender
+          mv browser/* .
+          rm -rf browser
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
         with:
