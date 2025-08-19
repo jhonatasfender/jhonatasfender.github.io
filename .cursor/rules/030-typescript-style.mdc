@@ -1,0 +1,21 @@
+---
+description: "Estilo de código TypeScript e interfaces do projeto"
+globs:
+  - "src/**/*.ts"
+tags: [typescript, style]
+alwaysApply: true
+priority: 20
+version: 1.0.0
+---
+
+# Requisitos
+- **Tipos explícitos**: declarar tipos de retorno em métodos públicos e assinaturas exportadas.
+- **Interfaces**: prefixo `I` para interfaces públicas (ex.: `ITranslationService`, `ITerminalCommand`).
+- **Injeção**: usar `@Inject(TOKEN)` com `InjectionToken` ao invés de acoplar diretamente a serviços concretos; manter `TRANSLATION_SERVICE` como abstração.
+- **Evitar `any`**: usar tipos precisos, inclusive para coleções (`Map<string, ITerminalCommand>` etc.).
+- **Nomeação**: nomes descritivos e completos; evitar abreviações opacas.
+- **Controle de fluxo**: early-returns e tratamento explícito de erros; não engolir exceções.
+
+# Anti-padrões
+- Uso de `any` ou casts inseguros.
+- Dependências circulares entre comandos e serviços.

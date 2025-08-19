@@ -6,13 +6,7 @@
     "version": "17.3.0",
     "structure": {
       "root": ".",
-      "directories": [
-        "src",
-        "src/app",
-        "src/assets",
-        ".vscode",
-        "public"
-      ],
+      "directories": ["src", "src/app", "src/assets", ".vscode", "public"],
       "files": {
         "configuration": [
           "angular.json",

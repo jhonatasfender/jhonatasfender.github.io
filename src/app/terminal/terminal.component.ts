@@ -1,12 +1,27 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, HostListener, Inject } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  AfterViewInit,
+  HostListener,
+  Inject,
+} from '@angular/core';
 import { TerminalMessageService } from './services/terminal-message.service';
 import { CommandHistoryService } from './command-history.service';
-import { ITranslationService, TRANSLATION_SERVICE } from '../core/interfaces/translation.interface';
+import {
+  ITranslationService,
+  TRANSLATION_SERVICE,
+} from '../core/interfaces/translation.interface';
 import { ITerminalCommand } from './interfaces/terminal-command.interface';
-import { ITerminalError, TERMINAL_ERROR } from './interfaces/terminal-error.interface';
+import {
+  ITerminalError,
+  TERMINAL_ERROR,
+} from './interfaces/terminal-error.interface';
 import { AboutCommand } from './commands/about.command';
 import { SkillsCommand } from './commands/skills.command';
 import { ProjectsCommand } from './commands/projects.command';
+import { ExperiencesCommand } from './commands/experiences.command';
 import { ContactCommand } from './commands/contact.command';
 import { ClearCommand } from './commands/clear.command';
 import { LangCommand } from './commands/lang.command';
@@ -20,10 +35,11 @@ import { TranslateModule } from '@ngx-translate/core';
   templateUrl: './terminal.component.html',
   styleUrls: ['./terminal.component.scss'],
   standalone: true,
-  imports: [CommonModule, FormsModule, TranslateModule]
+  imports: [CommonModule, FormsModule, TranslateModule],
 })
 export class TerminalComponent implements OnInit, AfterViewInit {
-  @ViewChild('commandInput') private commandInput!: ElementRef<HTMLInputElement>;
+  @ViewChild('commandInput')
+  private commandInput!: ElementRef<HTMLInputElement>;
   @ViewChild('output') private output!: ElementRef<HTMLDivElement>;
   @ViewChild('terminal') private terminal!: ElementRef<HTMLDivElement>;
 
@@ -36,15 +52,18 @@ export class TerminalComponent implements OnInit, AfterViewInit {
     @Inject(TERMINAL_ERROR) private terminalErrorService: ITerminalError,
     private terminalMessageService: TerminalMessageService,
     private commandHistory: CommandHistoryService,
-    @Inject(TRANSLATION_SERVICE) private translationService: ITranslationService
+    @Inject(TRANSLATION_SERVICE)
+    private translationService: ITranslationService,
   ) {
-    window.addEventListener('resize', () => {
-      this.isMobile = window.innerWidth <= 1024;
+    window.addEventListener('resize', (event: UIEvent) => {
+      const target = event.target as Window;
+      this.isMobile = target.innerWidth <= 1024;
     });
 
     const aboutCommand = new AboutCommand(this, translationService);
     const skillsCommand = new SkillsCommand(this, translationService);
     const projectsCommand = new ProjectsCommand(this, translationService);
+    const experiencesCommand = new ExperiencesCommand(this, translationService);
     const contactCommand = new ContactCommand(this, translationService);
     const clearCommand = new ClearCommand(this, translationService);
     const langCommand = new LangCommand(this, translationService);
@@ -53,12 +72,17 @@ export class TerminalComponent implements OnInit, AfterViewInit {
       ['about', aboutCommand],
       ['skills', skillsCommand],
       ['projects', projectsCommand],
+      ['experiences', experiencesCommand],
+      ['experience', experiencesCommand],
       ['contact', contactCommand],
       ['clear', clearCommand],
-      ['lang', langCommand]
+      ['lang', langCommand],
     ]);
 
-    this.commands.set('help', new HelpCommand(this, this.commands, translationService));
+    this.commands.set(
+      'help',
+      new HelpCommand(this, this.commands, translationService),
+    );
   }
 
   public ngOnInit(): void {
@@ -71,7 +95,7 @@ export class TerminalComponent implements OnInit, AfterViewInit {
       },
       error: (error) => {
         console.error('Error getting welcome messages:', error);
-      }
+      },
     });
   }
 
@@ -84,7 +108,7 @@ export class TerminalComponent implements OnInit, AfterViewInit {
   }
 
   private displayPendingMessages(): void {
-    this.pendingMessages.forEach(message => {
+    this.pendingMessages.forEach((message) => {
       if (message) {
         this.addLine(message);
       }
@@ -117,10 +141,12 @@ export class TerminalComponent implements OnInit, AfterViewInit {
       }
     } else if (event.key === 'ArrowUp') {
       event.preventDefault();
-      this.commandInput.nativeElement.value = this.commandHistory.getPreviousCommand();
+      this.commandInput.nativeElement.value =
+        this.commandHistory.getPreviousCommand();
     } else if (event.key === 'ArrowDown') {
       event.preventDefault();
-      this.commandInput.nativeElement.value = this.commandHistory.getNextCommand();
+      this.commandInput.nativeElement.value =
+        this.commandHistory.getNextCommand();
     }
   }
 
@@ -139,7 +165,10 @@ export class TerminalComponent implements OnInit, AfterViewInit {
         commandInstance.execute();
       }
     } else {
-      const errorTranslation = this.translationService.instant('ERRORS.COMMAND_NOT_FOUND', { command });
+      const errorTranslation = this.translationService.instant(
+        'ERRORS.COMMAND_NOT_FOUND',
+        { command },
+      );
       const errorMessage = errorTranslation.toString();
       this.terminalErrorService.printError(errorMessage);
     }

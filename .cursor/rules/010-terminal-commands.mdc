@@ -1,0 +1,38 @@
+---
+description: "Padrões para criação e manutenção de comandos do terminal"
+globs:
+  - "src/app/terminal/**/*.ts"
+tags: [terminal, commands, api]
+alwaysApply: true
+priority: 10
+version: 1.0.0
+---
+
+# Quando aplicar
+- Ao criar, editar ou remover qualquer comando em `src/app/terminal/commands/`.
+
+# Requisitos
+- **Classe base**: todo comando deve estender `BaseTerminalCommand` e implementar `execute()` e `getDescription()`.
+- **Nomenclatura**: nomes de comandos em minúsculas, single-token, sem espaços (ex.: `about`, `skills`, `projects`, `contact`, `clear`, `lang`).
+- **Descrição**: `getDescription()` deve retornar uma chave de tradução em `COMMANDS.*` via `translationService.instant(...).toString()`.
+- **Saída**: use `this.terminal.addLine(string)` para imprimir; nunca usar `console.log` para output ao usuário.
+- **Registro**: adicione a instância do comando ao `Map<string, ITerminalCommand>` no construtor de `TerminalComponent`.
+- **Ajuda**: o `HelpCommand` lista automaticamente do `Map`; garanta que a descrição esteja traduzida.
+- **Argumentos**: se um comando precisar de argumentos, exponha método público (ex.: `changeLanguage(arg: string)`) e trate no `TerminalComponent.executeCommand` de forma explícita, como `lang`.
+- **Limite de nome**: mantenha nomes de comandos com até 12 caracteres para alinhamento no `help`.
+
+# Estrutura Base (exemplo)
+<example>
+export class FooCommand extends BaseTerminalCommand {
+  public execute(): void {
+    this.terminal.addLine(this.translationService.instant('FOO.TITLE').toString());
+  }
+  public getDescription(): string {
+    return this.translationService.instant('COMMANDS.FOO').toString();
+  }
+}
+</example>
+
+# Anti-padrões
+- Acessar diretamente elementos do DOM dentro de comandos.
+- Incluir strings literais não traduzidas; use chaves de i18n.

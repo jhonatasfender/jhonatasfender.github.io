@@ -5,4 +5,6 @@ export interface ITerminalError {
   printError(message: string): void;
 }
 
-export const TERMINAL_ERROR = new InjectionToken<ITerminalError>('TERMINAL_ERROR');
+export const TERMINAL_ERROR = new InjectionToken<ITerminalError>(
+  'TERMINAL_ERROR',
+);

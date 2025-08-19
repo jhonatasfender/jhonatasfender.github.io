@@ -23,20 +23,20 @@ export const appConfig: ApplicationConfig = {
     {
       provide: TranslateLoader,
       useFactory: HttpLoaderFactory,
-      deps: [HttpClient]
+      deps: [HttpClient],
     },
     TranslateModule.forRoot({
       defaultLanguage: 'en',
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
+        deps: [HttpClient],
+      },
     }).providers!,
     {
       provide: TRANSLATION_SERVICE,
-      useClass: TranslationService
+      useClass: TranslationService,
     },
-    { provide: TERMINAL_ERROR, useClass: TerminalErrorService }
-  ]
+    { provide: TERMINAL_ERROR, useClass: TerminalErrorService },
+  ],
 };

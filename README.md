@@ -58,17 +58,20 @@ src/
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/jhonatasfender/jhonatasfender.github.io.git
 cd jhonatasfender.github.io
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Start the development server:
+
 ```bash
 ng serve
 ```

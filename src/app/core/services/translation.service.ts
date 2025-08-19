@@ -28,7 +28,7 @@ class TranslationResult {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TranslationService implements ITranslationService {
   private loadingSubject = new BehaviorSubject<boolean>(false);
@@ -58,10 +58,10 @@ export class TranslationService implements ITranslationService {
   public use(lang: string): Observable<Record<string, unknown>> {
     this.loadingSubject.next(true);
     return this.translateService.use(lang).pipe(
-      map(result => {
+      map((result) => {
         this.loadingSubject.next(false);
         return result;
-      })
+      }),
     );
   }
 
@@ -76,7 +76,6 @@ export class TranslationService implements ITranslationService {
           return value as string;
         }
       }
-
     }
 
     const keys = key.split('.');
@@ -96,19 +95,32 @@ export class TranslationService implements ITranslationService {
     return '';
   }
 
-  public get(key: string | string[], interpolateParams?: Record<string, unknown>): Observable<TranslationResult> {
+  public get(
+    key: string | string[],
+    interpolateParams?: Record<string, unknown>,
+  ): Observable<TranslationResult> {
     return this.translateService.get(key, interpolateParams).pipe(
-      map(translations => {
+      map((translations) => {
         if (Array.isArray(key)) {
-          return new TranslationResult(key.map(k => this.getTranslationValue(translations, k)));
+          return new TranslationResult(
+            key.map((k) => this.getTranslationValue(translations, k)),
+          );
         }
-        return new TranslationResult(this.getTranslationValue(translations, key));
-      })
+        return new TranslationResult(
+          this.getTranslationValue(translations, key),
+        );
+      }),
     );
   }
 
-  public instant(key: string | string[], interpolateParams?: Record<string, unknown>): TranslationResult {
-    const translation = this.translateService.instant(key, interpolateParams) as string | string[] | Record<string, unknown>;
+  public instant(
+    key: string | string[],
+    interpolateParams?: Record<string, unknown>,
+  ): TranslationResult {
+    const translation = this.translateService.instant(
+      key,
+      interpolateParams,
+    ) as string | string[] | Record<string, unknown>;
     if (typeof translation === 'string') {
       return new TranslationResult(translation);
     }
@@ -118,14 +130,21 @@ export class TranslationService implements ITranslationService {
     return new TranslationResult('');
   }
 
-  public stream(key: string | string[], interpolateParams?: Record<string, unknown>): Observable<TranslationResult> {
+  public stream(
+    key: string | string[],
+    interpolateParams?: Record<string, unknown>,
+  ): Observable<TranslationResult> {
     return this.translateService.stream(key, interpolateParams).pipe(
-      map(translations => {
+      map((translations) => {
         if (Array.isArray(key)) {
-          return new TranslationResult(key.map(k => this.getTranslationValue(translations, k)));
+          return new TranslationResult(
+            key.map((k) => this.getTranslationValue(translations, k)),
+          );
         }
-        return new TranslationResult(this.getTranslationValue(translations, key));
-      })
+        return new TranslationResult(
+          this.getTranslationValue(translations, key),
+        );
+      }),
     );
   }
 
@@ -140,10 +159,10 @@ export class TranslationService implements ITranslationService {
   public reloadLang(lang: string): Observable<Record<string, unknown>> {
     this.loadingSubject.next(true);
     return this.translateService.reloadLang(lang).pipe(
-      map(result => {
+      map((result) => {
         this.loadingSubject.next(false);
         return result;
-      })
+      }),
     );
   }
 

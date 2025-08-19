@@ -11,9 +11,27 @@
     "ABOUT": "👨‍💻 Conheça mais sobre mim",
     "SKILLS": "⚡ Minhas habilidades técnicas",
     "PROJECTS": "🚀 Projetos que desenvolvi",
+    "EXPERIENCES": "💼 Experiências profissionais",
     "CONTACT": "📧 Informações de contato",
     "CLEAR": "🧹 Limpa a tela do terminal",
     "LANG": "🌐 Muda o idioma"
+  },
+  "EXPERIENCES": {
+    "TITLE": "Experiências Profissionais:",
+    "LABEL": "Experiência",
+    "ITEMS": [
+      "2024/03–2025/02 • BLUECYBER Seguros • Desenvolvedor Fullstack Sênior — NestJS, Next.js/React, .NET Core, EF Core, PostgreSQL, Azure",
+      "2023/07–2024/02 • NTT DATA Europe & Latam • CSS — Apps Android/iOS (Clean Architecture, SOLID)",
+      "2022/06–2023/07 • Pixeon • Analista Desenvolvedor — Aurora (Java Swing/Groovy), Xviewer (NX, React + RxJS, CBOR), testes (BDD/Python)",
+      "2021/03–2022/06 • Pixeon • Analista Desenvolvedor Júnior — LGPD (React + Styled-Components, Spring Boot), WebLaudos, LTA",
+      "2022/06–2023/05 • GS3 TECNOLOGIA • Desenvolvedor Frontend — Micro Front-ends com Module Federation (Angular 12–14)",
+      "2020/03–2021/02 • Capgemini • Analista de Sistemas — BB Gift Card: Java (Kumuluz/Quarkus), React/React Native, Nginx, Kubernetes, Docker, Jenkins, ArgoCD, Rancher, Helm, InfluxDB, Prometheus, Jaeger, Grafana",
+      "2019/11–2020/03 • SONDA • Development SW 4 — Java, Angular 2+",
+      "2019/08–2019/11 • Connectdf • Desenvolvedor Java — Spring, Angular 2+, React, React Native",
+      "2018/02–2019/08 • Faros Educacional • Desenvolvedor — C#, Ruby, Angular 2+, Node.js + Ionic, PHP (CodeIgniter/Moodle), ExtJS/Sencha Architect",
+      "2019/01–2019/05 • Output - Pax Vida • Developer AOSP — Android (AOSP), Ruby on Rails (REST API)",
+      "2017/05–2018/02 • Insert Web • Desenvolvedor Freelancer — PHP (CodeIgniter), Ionic"
+    ]
   },
   "ABOUT": {
     "TITLE": "👨‍💻 Sobre mim",
@@ -49,11 +67,24 @@
   },
   "SKILLS": {
     "TITLE": "Habilidades Técnicas:",
-    "FRONTEND": "Desenvolvimento Frontend: Angular, React, Vue.js",
-    "BACKEND": "Desenvolvimento Backend: Node.js, Python, Java",
-    "DATABASE": "Banco de Dados: MySQL, PostgreSQL, MongoDB",
-    "DEVOPS": "DevOps: Docker, CI/CD, AWS",
-    "OTHERS": "Outros: Git, Linux, Scrum"
+    "LABELS": {
+      "FRONTEND": "Frontend",
+      "BACKEND": "Backend",
+      "MOBILE": "Mobile",
+      "DATABASE": "Bancos de Dados",
+      "DEVOPS": "DevOps",
+      "MONITORING": "Monitoramento",
+      "ARCHITECTURE": "Arquitetura",
+      "OTHERS": "Outros"
+    },
+    "FRONTEND": "Angular, React, Next.js, RxJS, Styled-Components, HTML, CSS, jQuery",
+    "BACKEND": "Node.js, NestJS, Java (Spring Boot, Quarkus), C# (.NET Core, Web API, Entity Framework), PHP (Laravel, CodeIgniter, Drupal, Doctrine), Python (BDD), JavaSE",
+    "MOBILE": "React Native, Android, iOS, AOSP",
+    "DATABASE": "PostgreSQL, MySQL, SQL Server, MongoDB, T-SQL",
+    "DEVOPS": "Kubernetes, Docker, Jenkins, ArgoCD, Rancher, Helm, Nginx, CI/CD",
+    "MONITORING": "Prometheus, Grafana, InfluxDB, Jaeger",
+    "ARCHITECTURE": "Micro Front-ends (MFE), Microsserviços, Monorepo (NX), BFF",
+    "OTHERS": "Git, Linux, Scrum, ITIL, UML, Modelagem de Dados, Web Services (REST/SOAP), SSH, Subversion, Windows, TOTVS Protheus, Geoprocessamento, Intranet"
   },
   "PROJECTS": {
     "TITLE": "Projetos:"
@@ -74,15 +105,19 @@
     "AVAILABLE": "📚 Idiomas disponíveis:",
     "EN": "🇺🇸 Inglês",
     "PT": "🇧🇷 Português",
-    "ES": "��🇦 Espanhol",
+    "ES": "🇪🇸 Espanhol",
     "ZH": "🇨🇳 Chinês",
     "USAGE": "💡 Uso: lang [{{languages}}]",
-    "INVALID": "❌ Idioma inválido. Use 'lang' para ver os idiomas disponíveis."
+    "INVALID": "❌ Idioma inválido. Use 'lang' para ver os idiomas disponíveis.",
+    "ERROR": "❌ Falha ao alterar o idioma. Tente novamente."
   },
   "TIPS": {
     "COMMAND": "💡 Dica",
     "ENTER": "Digite um comando e pressione Enter para executar",
     "HELP_HEADER": "📋 Comandos Disponíveis:",
     "HELP_FOOTER": "💡 Dica: Você pode usar a tecla Tab para autocompletar comandos"
+  },
+  "HELP": {
+    "ALIAS": "(alias: {{aliases}})"
   }
 }

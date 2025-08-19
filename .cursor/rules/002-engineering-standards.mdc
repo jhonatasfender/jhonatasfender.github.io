@@ -1,0 +1,72 @@
+---
+description: "Padrões de Engenharia – OOP forte, tipagem rigorosa e verbosidade clara"
+globs:
+  - "src/**/*.ts"
+  - "src/**/*.html"
+  - "src/**/*.scss"
+  - "public/assets/i18n/*.json"
+tags: [standards, oop, typescript, i18n]
+alwaysApply: true
+priority: 2
+version: 1.0.0
+---
+
+## Princípios Arquiteturais
+- **OOP/SOLID**: cada comando do terminal é uma classe com responsabilidade única, seguindo a hierarquia: `BaseTerminalCommand` -> comandos concretos (`AboutCommand`, `SkillsCommand`, `ProjectsCommand`, `ExperiencesCommand`, etc.).
+- **Injeção de dependências**: dependa de interfaces (`ITranslationService`, `ITerminalError`) via `@Inject`/tokens. Não instanciar serviços diretamente nas classes.
+- **Sem acesso arbitrário ao DOM**: toda saída deve ir por `TerminalComponent.addLine(...)` ou `TerminalErrorService.printError(...)`.
+
+## Tipagem e Segurança
+- **Proibido `any`** e conversões inseguras. Evitar `as` quando possível; prefira refinar o tipo por controle de fluxo.
+- **Sem `no-unsafe-*`**: evite construções que disparem regras `@typescript-eslint/no-unsafe-*`.
+- **Aserções desnecessárias**: evitar conforme `@typescript-eslint/no-unnecessary-type-assertion`.
+- **Atributos e parâmetros**: use modificadores e imutabilidade quando fizer sentido (`private`, `protected`, `public`, `readonly`).
+- **Nomes expressivos**: métodos com verbos; classes com substantivos; variáveis autoexplicativas.
+
+## Padrão de Comando
+- Comandos devem:
+  - Estender `BaseTerminalCommand`.
+  - Implementar `execute()` (lógica principal) e `getDescription()` (texto traduzido).
+  - Não usar `console.log`; usar `this.terminal.addLine(...)`.
+  - Extrair strings com `this.translationService.instant(key).toString()` antes de interpolar.
+  - Evitar lógica de i18n hardcoded; novas frases vão para `public/assets/i18n/*.json`.
+- Ajuda (`help`): a listagem deve derivar dos comandos registrados. Aliases devem ser detectados agrupando nomes que apontam para a mesma instância de comando (sem ifs especiais por comando).
+
+## Saída/Estilo no Terminal
+- Títulos podem usar destaque (`<span class="headline">`) e separadores (`<div class="separator"></div>`).
+- Categorias podem usar badges (`<span class="tag ...">`), com classes definidas em `terminal.component.scss`.
+- Não usar estilos inline; sempre classes CSS.
+
+## i18n
+- Paridade obrigatória de chaves entre `en`, `pt`, `es`, `zh`.
+- Evitar duplicação de rótulos: usar seções como `SKILLS.LABELS.*` e valores sem prefixo repetido.
+- Novos domínios devem ser namespaced (ex.: `EXPERIENCES.*`, `HELP.ALIAS`, etc.).
+
+## Exemplo – Detecção de aliases no help (padrão)
+```ts
+// Agrupa nomes por instância para descobrir aliases automaticamente
+const namesByInstance = new Map<ITerminalCommand, string[]>();
+this.availableCommands.forEach((cmd, name) => {
+  const names = namesByInstance.get(cmd) ?? [];
+  names.push(name);
+  namesByInstance.set(cmd, names);
+});
+
+namesByInstance.forEach((names, cmd) => {
+  const primary = names[0];
+  const aliases = names.slice(1);
+  const desc = cmd.getDescription();
+  const suffix = aliases.length
+    ? ' ' + this.translationService.instant('HELP.ALIAS', { aliases: aliases.join(', ') }).toString()
+    : '';
+  this.terminal.addLine(`${primary.padEnd(12)} ${desc}${suffix}`);
+});
+```
+
+## Revisão de Código (checklist)
+- O comando estende `BaseTerminalCommand` e depende apenas de interfaces/serviços injetados?
+- Não há `any`, casts desnecessários, ou violações `no-unsafe-*`?
+- Todas as strings estão em i18n e existem nos 4 idiomas?
+- Nomes e visibilidade dos membros seguem semântica clara?
+- Saída usa `addLine`/`printError` e classes CSS existentes (sem inline style)?
+

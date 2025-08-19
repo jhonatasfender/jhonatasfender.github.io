@@ -1,0 +1,22 @@
+---
+description: "Segurança de saída no terminal (HTML e injeção)"
+globs:
+  - "src/app/terminal/**/*"
+  - "src/**/*.ts"
+tags: [security, output]
+alwaysApply: true
+priority: 30
+version: 1.0.0
+---
+
+# Riscos
+- Injeção de HTML/JS ao concatenar strings diretamente em `innerHTML`.
+
+# Regras
+- Nunca renderizar conteúdo vindo do usuário via `innerHTML`.
+- Para HTML controlado (ex.: links de contato), construir a string a partir de chaves de i18n confiáveis e valores conhecidos.
+- Adicionar `rel="noopener noreferrer"` em links `target="_blank"`.
+- Preferir `addLine` para texto puro; quando usar HTML, manter markup mínimo e auditado.
+
+# Auditoria
+- Revisar periodicamente comandos que usam HTML (ex.: `ContactCommand`) para assegurar origem confiável das strings.

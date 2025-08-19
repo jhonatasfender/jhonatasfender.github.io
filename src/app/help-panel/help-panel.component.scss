@@ -35,11 +35,11 @@
   .close-button {
     margin-top: auto;
     padding: 12px 24px;
-    background: #4CAF50;
+    background: #4caf50;
     color: white;
     border: none;
     border-radius: 6px;
-    font-family: 'Fira Code', monospace;
+    font-family: "Fira Code", monospace;
     font-size: 1em;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -48,7 +48,8 @@
     outline: none;
     -webkit-tap-highlight-color: transparent;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       background: #45a049;
       transform: translateY(-2px);
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -57,16 +58,16 @@
   }
 
   h2 {
-    color: #4CAF50;
+    color: #4caf50;
     margin: 0 0 20px 0;
     font-size: 1.5em;
-    font-family: 'Fira Code', monospace;
+    font-family: "Fira Code", monospace;
   }
 
   p {
     color: #fff;
     margin-bottom: 20px;
-    font-family: 'Fira Code', monospace;
+    font-family: "Fira Code", monospace;
   }
 }
 
@@ -82,17 +83,17 @@
   gap: 5px;
 
   code {
-    color: #4CAF50;
+    color: #4caf50;
     background: rgba(76, 175, 80, 0.1);
     padding: 4px 8px;
     border-radius: 4px;
-    font-family: 'Fira Code', monospace;
+    font-family: "Fira Code", monospace;
   }
 
   span {
     color: #ccc;
     font-size: 0.9em;
-    font-family: 'Fira Code', monospace;
+    font-family: "Fira Code", monospace;
   }
 }
 
@@ -103,10 +104,10 @@
   border-radius: 6px;
   color: #fff;
   font-size: 0.9em;
-  font-family: 'Fira Code', monospace;
+  font-family: "Fira Code", monospace;
 
   span {
-    color: #4CAF50;
+    color: #4caf50;
     font-weight: bold;
   }
 }
@@ -118,7 +119,7 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #4CAF50;
+  background: #4caf50;
   color: white;
   border: none;
   font-size: 20px;
@@ -133,7 +134,8 @@
   outline: none;
   -webkit-tap-highlight-color: transparent;
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     transform: scale(1.1);
     box-shadow: 0 0 30px rgba(76, 175, 80, 0.4);
     opacity: 1;
@@ -141,7 +143,7 @@
   }
 
   span {
-    font-family: 'Fira Code', monospace;
+    font-family: "Fira Code", monospace;
   }
 }
 

@@ -1,0 +1,51 @@
+---
+description: "Guia principal do projeto: currículo virtual em formato de terminal (Angular)"
+globs:
+  - "src/**/*.ts"
+  - "src/**/*.html"
+  - "src/**/*.scss"
+  - "public/assets/i18n/*.json"
+tags: [project, overview, terminal, angular]
+alwaysApply: true
+priority: 1
+version: 1.0.0
+---
+
+# Contexto
+- Este projeto é um currículo interativo que simula um terminal em uma SPA Angular.
+- O usuário digita comandos (ex.: `about`, `skills`, `projects`, `contact`, `clear`, `lang`) e visualiza a saída no terminal.
+
+# Objetivos
+- **Clareza**: conteúdo objetivo, com comandos previsíveis e ajuda (`help`) completa.
+- **Consistência**: seguir padrões de nomenclatura, i18n e estrutura de comandos.
+- **Acessibilidade**: funcionamento em desktop e mobile (`fullscreen` em telas pequenas), navegação de histórico com setas.
+
+# Não-Objetivos
+- Não transformar o app em um interpretador shell real.
+- Não permitir entrada de HTML arbitrário do usuário.
+
+# Requisitos de Alto Nível
+- **Idiomas**: manter paridade das chaves em `public/assets/i18n/{en,pt,es,zh}.json`.
+- **Comandos**: todos os comandos devem estender `BaseTerminalCommand`, implementar `execute()` e `getDescription()` e imprimir via `TerminalComponent.addLine`.
+- **Erros**: mensagens via `TerminalErrorService.printError` com chaves em `ERRORS.*`.
+- **UX**: prompt fixo `jhonatasfender@portfolio:~$`, saída formatada em linhas (sem `console.log`).
+
+# Padrões de Conteúdo
+- Títulos seguidos por uma linha de `=` com o mesmo comprimento do título quando fizer sentido (ex.: seções de `about`).
+- Links clicáveis devem usar `<a target="_blank" rel="noopener noreferrer">`.
+- Evitar emojis em excesso; usar somente quando agregarem clareza.
+
+# Exemplo de Fluxo
+<example>
+Usuário: `help`
+- Lista todos os comandos com descrição alinhada.
+Usuário: `lang pt`
+- Altera idioma para `pt` e confirma a mudança.
+Usuário: `projects`
+- Mostra projetos com título traduzido e itens listados.
+</example>
+
+# Métricas de Qualidade
+- Nenhum acesso direto ao DOM fora dos pontos já estabelecidos em `TerminalComponent` e `TerminalErrorService`.
+- Nenhuma chave de tradução ausente ou hardcoded em comandos.
+- Nomes de comandos curtos (<= 12 caracteres) para alinhamento confortável no `help`.

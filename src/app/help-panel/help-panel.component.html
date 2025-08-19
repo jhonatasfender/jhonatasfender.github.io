@@ -4,36 +4,37 @@
 
 <div class="help-panel" [class.mobile]="isMobile" [class.open]="isPanelOpen">
   <div class="help-content">
-    <h2>{{ getTranslation('WELCOME.MESSAGE') }}</h2>
-    <p>{{ getTranslation('WELCOME.HELP') }}</p>
+    <h2>{{ getTranslation("WELCOME.MESSAGE") }}</h2>
+    <p>{{ getTranslation("WELCOME.HELP") }}</p>
     <div class="command-list">
       <div class="command-item">
         <code>help</code>
-        <span>{{ getTranslation('COMMANDS.HELP') }}</span>
+        <span>{{ getTranslation("COMMANDS.HELP") }}</span>
       </div>
       <div class="command-item">
         <code>about</code>
-        <span>{{ getTranslation('COMMANDS.ABOUT') }}</span>
+        <span>{{ getTranslation("COMMANDS.ABOUT") }}</span>
       </div>
       <div class="command-item">
         <code>skills</code>
-        <span>{{ getTranslation('COMMANDS.SKILLS') }}</span>
+        <span>{{ getTranslation("COMMANDS.SKILLS") }}</span>
       </div>
       <div class="command-item">
         <code>projects</code>
-        <span>{{ getTranslation('COMMANDS.PROJECTS') }}</span>
+        <span>{{ getTranslation("COMMANDS.PROJECTS") }}</span>
       </div>
       <div class="command-item">
         <code>contact</code>
-        <span>{{ getTranslation('COMMANDS.CONTACT') }}</span>
+        <span>{{ getTranslation("COMMANDS.CONTACT") }}</span>
       </div>
       <div class="command-item">
         <code>clear</code>
-        <span>{{ getTranslation('COMMANDS.CLEAR') }}</span>
+        <span>{{ getTranslation("COMMANDS.CLEAR") }}</span>
       </div>
     </div>
     <div class="tip">
-      <span>💡 {{ getTranslation('TIPS.COMMAND') }}:</span> {{ getTranslation('TIPS.ENTER') }}
+      <span>💡 {{ getTranslation("TIPS.COMMAND") }}:</span>
+      {{ getTranslation("TIPS.ENTER") }}
     </div>
     <button class="close-button" *ngIf="isMobile" (click)="closePanel()">
       Fechar Ajuda

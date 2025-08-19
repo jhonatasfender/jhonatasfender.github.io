@@ -11,9 +11,27 @@
     "ABOUT": "👨‍💻 Conoce más sobre mí",
     "SKILLS": "⚡ Mis habilidades técnicas",
     "PROJECTS": "🚀 Proyectos que he desarrollado",
+    "EXPERIENCES": "💼 Experiencias profesionales",
     "CONTACT": "📧 Información de contacto",
     "CLEAR": "🧹 Limpiar pantalla del terminal",
     "LANG": "🌐 Cambiar idioma"
+  },
+  "EXPERIENCES": {
+    "TITLE": "Experiencias Profesionales:",
+    "LABEL": "Experiencia",
+    "ITEMS": [
+      "2024/03–2025/02 • BLUECYBER Seguros • Desarrollador Fullstack Senior — NestJS, Next.js/React, .NET Core, EF Core, PostgreSQL, Azure",
+      "2023/07–2024/02 • NTT DATA Europe & Latam • CSS — Apps Android/iOS (Clean Architecture, SOLID)",
+      "2022/06–2023/07 • Pixeon • Analista Desarrollador — Aurora (Java Swing/Groovy), Xviewer (NX, React + RxJS, CBOR), pruebas (BDD/Python)",
+      "2021/03–2022/06 • Pixeon • Analista Desarrollador Junior — LGPD (React + Styled-Components, Spring Boot), WebLaudos, LTA",
+      "2022/06–2023/05 • GS3 TECNOLOGIA • Desarrollador Frontend — Micro Front-ends con Module Federation (Angular 12–14)",
+      "2020/03–2021/02 • Capgemini • Analista de Sistemas — BB Gift Card: Java (Kumuluz/Quarkus), React/React Native, Nginx, Kubernetes, Docker, Jenkins, ArgoCD, Rancher, Helm, InfluxDB, Prometheus, Jaeger, Grafana",
+      "2019/11–2020/03 • SONDA • Development SW 4 — Java, Angular 2+",
+      "2019/08–2019/11 • Connectdf • Desarrollador Java — Spring, Angular 2+, React, React Native",
+      "2018/02–2019/08 • Faros Educacional • Desarrollador — C#, Ruby, Angular 2+, Node.js + Ionic, PHP (CodeIgniter/Moodle), ExtJS/Sencha Architect",
+      "2019/01–2019/05 • Output - Pax Vida • Developer AOSP — Android (AOSP), Ruby on Rails (REST API)",
+      "2017/05–2018/02 • Insert Web • Desarrollador Freelancer — PHP (CodeIgniter), Ionic"
+    ]
   },
   "ABOUT": {
     "TITLE": "👨‍💻 Sobre mí",
@@ -49,11 +67,24 @@
   },
   "SKILLS": {
     "TITLE": "Habilidades Técnicas:",
-    "FRONTEND": "Desarrollo Frontend: Angular, React, Vue.js",
-    "BACKEND": "Desarrollo Backend: Node.js, Python, Java",
-    "DATABASE": "Base de Datos: MySQL, PostgreSQL, MongoDB",
-    "DEVOPS": "DevOps: Docker, CI/CD, AWS",
-    "OTHERS": "Otros: Git, Linux, Scrum"
+    "LABELS": {
+      "FRONTEND": "Frontend",
+      "BACKEND": "Backend",
+      "MOBILE": "Móvil",
+      "DATABASE": "Bases de Datos",
+      "DEVOPS": "DevOps",
+      "MONITORING": "Monitoreo",
+      "ARCHITECTURE": "Arquitectura",
+      "OTHERS": "Otros"
+    },
+    "FRONTEND": "Angular, React, Next.js, RxJS, Styled-Components, HTML, CSS, jQuery",
+    "BACKEND": "Node.js, NestJS, Java (Spring Boot, Quarkus), C# (.NET Core, Web API, Entity Framework), PHP (Laravel, CodeIgniter, Drupal, Doctrine), Python (BDD), JavaSE",
+    "MOBILE": "React Native, Android, iOS, AOSP",
+    "DATABASE": "PostgreSQL, MySQL, SQL Server, MongoDB, T-SQL",
+    "DEVOPS": "Kubernetes, Docker, Jenkins, ArgoCD, Rancher, Helm, Nginx, CI/CD",
+    "MONITORING": "Prometheus, Grafana, InfluxDB, Jaeger",
+    "ARCHITECTURE": "Micro Front-ends (MFE), Microservicios, Monorepo (NX), BFF",
+    "OTHERS": "Git, Linux, Scrum, ITIL, UML, Modelado de Datos, Web Services (REST/SOAP), SSH, Subversion, Windows, TOTVS Protheus, Geoprocesamiento, Intranet"
   },
   "PROJECTS": {
     "TITLE": "Proyectos:"
@@ -77,12 +108,16 @@
     "ES": "🇪🇸 Español",
     "ZH": "🇨🇳 Chino",
     "USAGE": "💡 Uso: lang [{{languages}}]",
-    "INVALID": "❌ Idioma inválido. Usa 'lang' para ver los idiomas disponibles."
+    "INVALID": "❌ Idioma inválido. Usa 'lang' para ver los idiomas disponibles.",
+    "ERROR": "❌ Error al cambiar el idioma. Inténtalo de nuevo."
   },
   "TIPS": {
     "COMMAND": "💡 Consejo",
     "ENTER": "Escribe un comando y presiona Enter para ejecutar",
     "HELP_HEADER": "📋 Comandos Disponibles:",
     "HELP_FOOTER": "💡 Consejo: Puedes usar la tecla Tab para autocompletar comandos"
+  },
+  "HELP": {
+    "ALIAS": "(alias: {{aliases}})"
   }
 }

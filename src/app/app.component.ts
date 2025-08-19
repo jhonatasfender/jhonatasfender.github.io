@@ -8,7 +8,7 @@ import { TranslateModule } from '@ngx-translate/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   standalone: true,
-  imports: [TerminalComponent, HelpPanelComponent, TranslateModule]
+  imports: [TerminalComponent, HelpPanelComponent, TranslateModule],
 })
 export class AppComponent {
   public title = 'portfolio';

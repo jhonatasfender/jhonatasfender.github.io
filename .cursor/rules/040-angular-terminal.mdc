@@ -1,0 +1,30 @@
+---
+description: "Diretrizes Angular específicas do terminal e UX do componente"
+globs:
+  - "src/app/terminal/**/*"
+  - "src/app/core/**/*"
+tags: [angular, terminal, ux]
+alwaysApply: true
+priority: 25
+version: 1.0.0
+---
+
+# Componente `TerminalComponent`
+- Manter `standalone: true` e imports mínimos necessários.
+- Gerenciar foco do input programaticamente (`focusInput`) e restaurar após executar comandos.
+- Evitar `console.log` para feedback ao usuário; usar `addLine` e `printError`.
+- `executeCommand` deve renderizar a linha do prompt seguida do comando e tratar argumentos explicitamente.
+- `HostListener` para navegação de histórico com `ArrowUp/ArrowDown` deve prevenir scroll padrão.
+
+# Serviços
+- `TerminalMessageService`: usar `get([...]).pipe(map(...))` para mensagens iniciais.
+- `TerminalErrorService`: manter único ponto de escrita de erros no `output` (classe `error`).
+
+# HTML
+- Prompt `jhonatasfender@portfolio:~$` deve estar visível e consistente.
+- `output` deve autoscroll após cada `addLine`/erro.
+- Não adicionar inputs/controles extras sem necessidade.
+
+# Performance
+- Evitar reflows desnecessários; acumular strings se for imprimir blocos grandes.
+- Não manipular o DOM diretamente em comandos (usar API do componente).

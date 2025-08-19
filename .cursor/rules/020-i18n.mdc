@@ -1,0 +1,31 @@
+---
+description: "Padrões de internacionalização (i18n) e chaves de tradução"
+globs:
+  - "public/assets/i18n/*.json"
+  - "src/**/*.ts"
+tags: [i18n, content]
+alwaysApply: true
+priority: 15
+version: 1.0.0
+---
+
+# Escopo
+- Todas as mensagens visíveis ao usuário devem vir de chaves de tradução.
+
+# Requisitos
+- **Paridade de chaves**: qualquer chave adicionada deve existir em `en.json`, `pt.json`, `es.json`, `zh.json`.
+- **Seções**: organizar chaves por domínio já existente: `WELCOME`, `TIPS`, `ERRORS`, `COMMANDS`, `ABOUT`, `SKILLS`, `PROJECTS`, `CONTACT`, `LANGUAGE`.
+- **API**: prefira `instant(key)` para render síncrona e `get([...])` para coleções (ex.: mensagens de boas-vindas). Converta sempre com `.toString()` ou `.toArray()` conforme o caso.
+- **Placeholders**: use objetos de interpolação (ex.: `{ lang: 'pt' }`) e mantenha o mesmo placeholder em todos os idiomas.
+- **Links**: chaves como `CONTACT.GITHUB` e `CONTACT.LINKEDIN` devem conter URLs válidas; se houver label, separe por ": " como no padrão atual.
+- **Idiomas válidos**: ao adicionar um novo idioma, atualizar a lista em `lang.command.ts` (`validLanguages`).
+
+# Exemplo
+<example>
+// Uso com placeholder
+this.translationService.instant('LANGUAGE.CHANGED', { lang: 'pt' }).toString();
+</example>
+
+# Validações
+- Nenhuma string literal user-facing em comandos.
+- Evitar variações semânticas amplas entre idiomas; manter tom e conteúdo similares.

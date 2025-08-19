@@ -11,9 +11,27 @@
     "ABOUT": "👨‍💻 了解更多关于我的信息",
     "SKILLS": "⚡ 我的技术技能",
     "PROJECTS": "🚀 我开发的项目",
+    "EXPERIENCES": "💼 职业经历",
     "CONTACT": "📧 联系信息",
     "CLEAR": "🧹 清除终端屏幕",
     "LANG": "🌐 更改语言"
+  },
+  "EXPERIENCES": {
+    "TITLE": "职业经历：",
+    "LABEL": "经历",
+    "ITEMS": [
+      "2024/03–2025/02 • BLUECYBER Seguros • 高级全栈开发 — NestJS、Next.js/React、.NET Core、EF Core、PostgreSQL、Azure",
+      "2023/07–2024/02 • NTT DATA Europe & Latam • CSS — Android/iOS 应用（Clean Architecture、SOLID）",
+      "2022/06–2023/07 • Pixeon • 开发分析师 — Aurora（Java Swing/Groovy）、Xviewer（NX、React + RxJS、CBOR）、测试（BDD/Python）",
+      "2021/03–2022/06 • Pixeon • 初级开发分析师 — LGPD（React + Styled-Components、Spring Boot）、WebLaudos、LTA",
+      "2022/06–2023/05 • GS3 TECNOLOGIA • 前端开发 — 使用 Module Federation 的微前端（Angular 12–14）",
+      "2020/03–2021/02 • Capgemini • 系统分析师 — BB Gift Card：Java（Kumuluz/Quarkus）、React/React Native、Nginx、Kubernetes、Docker、Jenkins、ArgoCD、Rancher、Helm、InfluxDB、Prometheus、Jaeger、Grafana",
+      "2019/11–2020/03 • SONDA • Development SW 4 — Java、Angular 2+",
+      "2019/08–2019/11 • Connectdf • Java 开发 — Spring、Angular 2+、React、React Native",
+      "2018/02–2019/08 • Faros Educacional • 开发 — C#、Ruby、Angular 2+、Node.js + Ionic、PHP（CodeIgniter/Moodle）、ExtJS/Sencha Architect",
+      "2019/01–2019/05 • Output - Pax Vida • AOSP 开发 — Android（AOSP）、Ruby on Rails（REST API）",
+      "2017/05–2018/02 • Insert Web • 自由职业开发 — PHP（CodeIgniter）、Ionic"
+    ]
   },
   "ABOUT": {
     "TITLE": "👨‍💻 关于我",
@@ -49,11 +67,24 @@
   },
   "SKILLS": {
     "TITLE": "技术技能：",
-    "FRONTEND": "前端开发：Angular、React、Vue.js",
-    "BACKEND": "后端开发：Node.js、Python、Java",
-    "DATABASE": "数据库：MySQL、PostgreSQL、MongoDB",
-    "DEVOPS": "DevOps：Docker、CI/CD、AWS",
-    "OTHERS": "其他：Git、Linux、Scrum"
+    "LABELS": {
+      "FRONTEND": "前端",
+      "BACKEND": "后端",
+      "MOBILE": "移动端",
+      "DATABASE": "数据库",
+      "DEVOPS": "DevOps",
+      "MONITORING": "监控",
+      "ARCHITECTURE": "架构",
+      "OTHERS": "其他"
+    },
+    "FRONTEND": "Angular、React、Next.js、RxJS、Styled-Components、HTML、CSS、jQuery",
+    "BACKEND": "Node.js、NestJS、Java（Spring Boot、Quarkus）、C#（.NET Core、Web API、Entity Framework）、PHP（Laravel、CodeIgniter、Drupal、Doctrine）、Python（BDD）、JavaSE",
+    "MOBILE": "React Native、Android、iOS、AOSP",
+    "DATABASE": "PostgreSQL、MySQL、SQL Server、MongoDB、T-SQL",
+    "DEVOPS": "Kubernetes、Docker、Jenkins、ArgoCD、Rancher、Helm、Nginx、CI/CD",
+    "MONITORING": "Prometheus、Grafana、InfluxDB、Jaeger",
+    "ARCHITECTURE": "微前端（MFE）、微服务、Monorepo（NX）、BFF",
+    "OTHERS": "Git、Linux、Scrum、ITIL、UML、数据建模、Web服务（REST/SOAP）、SSH、Subversion、Windows、TOTVS Protheus、地理处理、内联网"
   },
   "PROJECTS": {
     "TITLE": "项目："
@@ -77,12 +108,16 @@
     "ES": "🇪🇸 西班牙语",
     "ZH": "🇨🇳 中文",
     "USAGE": "💡 用法：lang [{{languages}}]",
-    "INVALID": "❌ 无效的语言。使用'lang'查看可用语言。"
+    "INVALID": "❌ 无效的语言。使用'lang'查看可用语言。",
+    "ERROR": "❌ 更改语言失败。请重试。"
   },
   "TIPS": {
     "COMMAND": "💡 提示",
     "ENTER": "输入命令并按Enter执行",
     "HELP_HEADER": "📋 可用命令：",
     "HELP_FOOTER": "💡 提示：您可以使用Tab键自动完成命令"
+  },
+  "HELP": {
+    "ALIAS": "(别名：{{aliases}})"
   }
 }

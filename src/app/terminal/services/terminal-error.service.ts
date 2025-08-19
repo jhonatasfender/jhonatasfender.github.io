@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ITerminalError } from '../interfaces/terminal-error.interface';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TerminalErrorService implements ITerminalError {
   private outputElement?: HTMLElement;
