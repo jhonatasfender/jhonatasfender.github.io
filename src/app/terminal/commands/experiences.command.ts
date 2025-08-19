@@ -28,10 +28,23 @@ export class ExperiencesCommand extends BaseTerminalCommand {
         ? [itemsValue]
         : [];
 
-    items.forEach((entry: string) => {
-      this.terminal.addLine(
-        `<span class="tag tag-exp">${this.translateService.instant('EXPERIENCES.LABEL').toString()}</span> ${entry}`,
-      );
+    items.forEach((entry: string, idx: number) => {
+      const parts = entry.split('\n');
+      const header = parts.shift() || '';
+      const body = parts.join('\n').trim();
+
+      const headerHtml = `<div class="exp-header"><span class=\"tag tag-exp\">${this.translateService
+        .instant('EXPERIENCES.LABEL')
+        .toString()}</span> ${header}</div>`;
+      const bodyHtml = body
+        ? `<div class=\"exp-body\">${body.replace(/\n/g, '<br/>')}</div>`
+        : '';
+
+      this.terminal.addLine(`<div class=\"exp-item\">${headerHtml}${bodyHtml}</div>`);
+
+      if (idx < items.length - 1) {
+        this.terminal.addLine('<div class="exp-divider"></div>');
+      }
     });
   }
 
